@@ -2,9 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: #1d1d1d;
-  color: #f3f3f3;
-  padding: 0.5rem 0;
+  box-shadow: 0rem 1px 1rem rgba(0, 0, 0, 0.1);
 }
 
 .menu {
@@ -15,10 +13,19 @@
     margin: 0.4rem;
     font-size: 1rem;
   }
+
+  a {
+    color: #1d1d1d;
+  }
+
+  a.active {
+    font-weight: bold;
+    border-bottom: 3px solid #1d1d1d;
+  }
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
 
 .actions {
@@ -35,9 +42,10 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    cursor: pointer;
 
     &:hover {
-      background-color: #000;
+      background-color: #f3f3f3;
     }
   }
 

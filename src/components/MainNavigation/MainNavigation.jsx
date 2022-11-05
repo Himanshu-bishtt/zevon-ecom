@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { CartIcon, WishlistIcon, UserIcon } from "../../icons";
-import classes from "./MainNavigation.module.scss";
+import { CartIcon, WishlistIcon, UserIcon } from '../../icons';
+import classes from './MainNavigation.module.scss';
 
 const MainNavigation = () => {
   return (

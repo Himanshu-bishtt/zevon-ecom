@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #1d1d1d;
+  color: #f3f3f3;
+  padding: 0.5rem 0;
+}
+
+.menu {
+  display: flex;
+  column-gap: 1rem;
+
+  li {
+    margin: 0.4rem;
+    font-size: 1rem;
+  }
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #000;
+    }
+  }
+
+  .logo {
+    color: red;
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+}

@@ -1,3 +1,5 @@
+@import "https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700&display=swap";
+
 *,
 *::before,
 *::after {
@@ -33,6 +35,7 @@ ul {
 
 body {
   font-size: 62.5%;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 h1,

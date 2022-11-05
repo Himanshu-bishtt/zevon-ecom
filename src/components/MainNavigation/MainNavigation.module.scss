@@ -1,8 +1,11 @@
+@import '../../sass/Variables.scss';
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  box-shadow: 0rem 1px 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0rem 1px 10px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
 }
 
 .menu {
@@ -15,12 +18,13 @@
   }
 
   a {
-    color: #1d1d1d;
+    color: $color-black;
   }
 
   a.active {
+    color: $color-3;
     font-weight: bold;
-    border-bottom: 3px solid #1d1d1d;
+    border-bottom: 3px solid $color-3;
   }
 }
 
@@ -45,12 +49,12 @@
     cursor: pointer;
 
     &:hover {
-      background-color: #f3f3f3;
+      background-color: $color-white;
     }
   }
 
   .logo {
-    color: red;
+    color: $color-3;
     height: 1.2rem;
     width: 1.2rem;
   }

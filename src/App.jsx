@@ -5,6 +5,8 @@ import RootLayout from './pages/RootLayout';
 import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
 import About from './pages/About/About';
+import ProductDetail from './pages/ProductDetail/ProductDetail';
+import PageNotFound from './pages/NotFound/PageNotFound';
 
 const router = createBrowserRouter([
   {
@@ -15,10 +17,15 @@ const router = createBrowserRouter([
       {
         path: '/products',
         element: <Products />,
+        children: [{ path: ':id', element: <ProductDetail /> }],
       },
       {
         path: '/about',
         element: <About />,
+      },
+      {
+        path: '*',
+        element: <PageNotFound />,
       },
     ],
   },

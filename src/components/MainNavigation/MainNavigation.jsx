@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { logo } from '../../assets';
+
 import { CartIcon, WishlistIcon, UserIcon } from '../../icons';
 import classes from './MainNavigation.module.scss';
 
@@ -33,7 +35,8 @@ const MainNavigation = () => {
           </NavLink>
         </li>
       </ul>
-      <h2 className={classes.logo}>Logo</h2>
+      {/* <h2 className={classes.logo}>Logo</h2> */}
+      <img src={logo} alt="main logo" className={classes.logo} />
       <div className={classes.actions}>
         <button>
           <CartIcon className={classes.logo} />

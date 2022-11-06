@@ -12,6 +12,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
+    errorElement: <h1>Some error occurred!</h1>,
     children: [
       { index: true, element: <Home /> },
       {

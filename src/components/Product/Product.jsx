@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import classes from './Product.module.scss';
 
-const Product = ({ title, price, image, category, rating }) => {
+const Product = ({ title, price, image, category, rate, count }) => {
   return (
     <div className={classes.product}>
       <img
@@ -18,17 +18,13 @@ const Product = ({ title, price, image, category, rating }) => {
         <p className={classes.price}>${price} onwards</p>
 
         <div className={classes.rating}>
-          <p className={classes.stars}>{rating.rate} ⭐</p>
-          <p className={classes.count}>({rating.count})</p>
+          <p className={classes.stars}>{rate} ⭐</p>
+          <p className={classes.count}>({count})</p>
         </div>
       </div>
-      {rating.rate >= 4 && <p className={classes.ratingBadge}>Top Rated</p>}
+      {rate >= 4 && <p className={classes.ratingBadge}>Top Rated</p>}
     </div>
   );
-};
-
-Product.PropTypes = {
-  id: PropTypes.string.isRequired,
 };
 
 export default React.memo(Product);

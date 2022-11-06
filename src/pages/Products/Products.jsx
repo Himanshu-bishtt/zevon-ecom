@@ -1,5 +1,5 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { Suspense, useState } from 'react';
+import { defer, useLoaderData, Await } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import Product from '../../components/Product/Product';
 import classes from './Products.module.scss';
@@ -7,6 +7,11 @@ import classes from './Products.module.scss';
 const Products = () => {
   const loaderData = useLoaderData();
 
+  const [priceSliderValue, setPriceSliderValue] = useState(0);
+
+  const priceRangeHandler = event => {
+    setPriceSliderValue(event.nativeEvent.target.value);
+  };
   return (
     <div className={classes.products}>
       <div className={classes.banner}>
@@ -21,7 +26,7 @@ const Products = () => {
               <label htmlFor="asc">Asceding</label>
             </div>
             <div className={classes['filter-position-controls']}>
-              <input type="radio" name="category" id="desc" />
+              <input type="radio" name="position" id="desc" />
               <label htmlFor="desc">Decending</label>
             </div>
           </div>
@@ -48,14 +53,41 @@ const Products = () => {
           <div className={classes['filter-price']}>
             <h3>Filter Price</h3>
             <div className={classes['filter-price-controls']}>
-              <input type="range" name="price" id="price" min={0} max={1000} />
+              <input
+                type="range"
+                name="price"
+                id="price"
+                min={0}
+                max={1000}
+                onChange={priceRangeHandler}
+              />
+              <input
+                value={`$${Number(priceSliderValue).toFixed(2)}`}
+                type="text"
+                readOnly
+                className={classes['filter-price-value']}
+              />
             </div>
           </div>
         </div>
         <div className={classes.items}>
-          {loaderData.map(item => (
-            <Product key={item.id} {...item} />
-          ))}
+          <Suspense fallback={<p>Loading...</p>}>
+            <Await
+              resolve={loaderData.products}
+              errorElement={<h1>Some error occurred while loading data</h1>}
+            >
+              {resolveProducts =>
+                resolveProducts.map(item => (
+                  <Product
+                    key={item.id}
+                    {...item}
+                    rate={item.rating.rate}
+                    count={item.rating.count}
+                  />
+                ))
+              }
+            </Await>
+          </Suspense>
         </div>
       </div>
     </div>
@@ -65,5 +97,5 @@ const Products = () => {
 export default Products;
 
 export const loader = () => {
-  return getProducts();
+  return defer({ products: getProducts() });
 };

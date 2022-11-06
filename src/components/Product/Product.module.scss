@@ -1,0 +1,88 @@
+@import '../../sass/Variables.scss';
+
+.product {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0 0 0;
+  border-radius: 10px;
+  cursor: pointer;
+  height: max-content;
+  background-color: $color-white;
+  transition: all 0.5s;
+  animation: slide-right 0.5s ease;
+}
+
+// .product:hover {
+//   transform: translateY(-0.5rem);
+// }
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    transform: translateX(0rem);
+  }
+}
+
+.image {
+  height: 8rem;
+  width: 8rem;
+  align-self: center;
+  border-radius: 50%;
+}
+
+.content {
+  margin: 1rem 1rem 1rem 2rem;
+}
+
+.head h2 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+}
+
+.head h3 {
+  color: #6e6e6e;
+  font-size: 0.7rem;
+}
+
+.price {
+  font-size: 0.8rem;
+  margin: 1rem 0;
+  color: $color-3;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.stars {
+  font-size: 0.8rem;
+  background-color: $color-grey;
+  color: $color-white;
+  padding: 0.4rem;
+  border-radius: 5px;
+}
+
+.count {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.ratingBadge {
+  background-color: $color-3;
+  color: $color-white;
+  display: inline-block;
+  text-align: center;
+  padding: 0.5rem 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}

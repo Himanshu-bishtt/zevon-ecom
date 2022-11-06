@@ -1,0 +1,80 @@
+@import '../../sass/Variables.scss';
+
+.products {
+}
+
+.banner {
+  background: linear-gradient(
+      to right bottom,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('../../assets/products-banner.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: $color-white;
+    font-size: 2.5rem;
+  }
+}
+.main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin: 2rem;
+  column-gap: 2rem;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 1rem;
+  background-color: $color-white;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  height: max-content;
+  border-radius: 10px;
+
+  .filter-position,
+  .filter-category,
+  .filter-price {
+    padding: 1rem 0;
+
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  .filter-position-controls,
+  .filter-category-controls,
+  .filter-price-controls {
+    label {
+      font-size: 1rem;
+      margin-left: 0.3rem;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 0.8rem;
+    }
+  }
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 2rem;
+}
+
+.sort {
+  padding: 0.5rem 1rem;
+  background-color: $color-1;
+  color: $color-white;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}

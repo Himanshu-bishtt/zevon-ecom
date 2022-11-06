@@ -20,7 +20,7 @@ const Products = () => {
       <div className={classes.main}>
         <div className={classes.filters}>
           <div className={classes['filter-position']}>
-            <h3>Filter Position</h3>
+            <h3>Position</h3>
             <div className={classes['filter-position-controls']}>
               <input type="radio" name="position" id="asc" />
               <label htmlFor="asc">Asceding</label>
@@ -31,7 +31,7 @@ const Products = () => {
             </div>
           </div>
           <div className={classes['filter-category']}>
-            <h3>Filter Category</h3>
+            <h3>Category</h3>
             <div className={classes['filter-category-controls']}>
               <input type="radio" name="category" id="men" />
               <label htmlFor="men">Men</label>
@@ -51,7 +51,7 @@ const Products = () => {
           </div>
 
           <div className={classes['filter-price']}>
-            <h3>Filter Price</h3>
+            <h3>Price</h3>
             <div className={classes['filter-price-controls']}>
               <input
                 type="range"

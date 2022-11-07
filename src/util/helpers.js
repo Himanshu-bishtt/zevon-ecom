@@ -1,5 +1,6 @@
 export const BASE_URL = 'https://fakestoreapi.com';
 export const TIMEOUT_SEC = 5000;
+export const SLEEP_SEC = 4000;
 
 export const timeout = function () {
   return new Promise(function (_, reject) {
@@ -10,5 +11,13 @@ export const timeout = function () {
         )
       );
     }, TIMEOUT_SEC);
+  });
+};
+
+export const sleep = () => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+    }, SLEEP_SEC);
   });
 };

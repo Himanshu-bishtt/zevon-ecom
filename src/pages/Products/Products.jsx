@@ -1,5 +1,5 @@
 import React, { Suspense, useState } from 'react';
-import { defer, useLoaderData, Await, useNavigate } from 'react-router-dom';
+import { defer, useLoaderData, Await } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import Product from '../../components/Product/Product';

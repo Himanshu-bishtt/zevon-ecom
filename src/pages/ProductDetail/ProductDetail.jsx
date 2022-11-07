@@ -1,13 +1,24 @@
-import React from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { getProduct } from '../../api/api';
 import { Icons } from '../../icons';
 
 import classes from './ProductDetail.module.scss';
 
 const ProductDetail = () => {
+  const [quantity, setQuantity] = useState(1);
   const { id, title, price, description, rating, category, image } =
     useLoaderData();
+
+  const quantityIncreaseHandler = () => {
+    if (quantity === 10) return;
+    setQuantity(prev => prev + 1);
+  };
+
+  const quantityDecreaseHandler = () => {
+    if (quantity === 1) return;
+    setQuantity(prev => prev - 1);
+  };
 
   return (
     <div className={classes.product}>
@@ -33,14 +44,14 @@ const ProductDetail = () => {
         </div>
 
         <div className={classes.actions}>
-          <div className={classes.item}>
-            <button>
+          <div className={classes.quantity}>
+            <button type="button" onClick={quantityDecreaseHandler}>
               <svg>
                 <use href={`${Icons}#icon-minus`} />
               </svg>
             </button>
-            <p>1</p>
-            <button>
+            <p>{quantity}</p>
+            <button type="button" onClick={quantityIncreaseHandler}>
               <svg>
                 <use href={`${Icons}#icon-plus`} />
               </svg>

@@ -3,10 +3,13 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import RootLayout from './pages/RootLayout';
 import Home from './pages/Home/Home';
-import Products, { loader as ProductLoader } from './pages/Products/Products';
+import Products, { loader as ProductsLoader } from './pages/Products/Products';
 import About from './pages/About/About';
-import ProductDetail from './pages/ProductDetail/ProductDetail';
+import ProductDetail, {
+  loader as ProductLoader,
+} from './pages/ProductDetail/ProductDetail';
 import PageNotFound from './pages/NotFound/PageNotFound';
+import ProductsLayout from './pages/ProductsLayout';
 
 const router = createBrowserRouter([
   {
@@ -17,12 +20,19 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       {
         path: '/products',
-        element: <Products />,
-        loader: ProductLoader,
-      },
-      {
-        path: '/products/:id',
-        element: <ProductDetail />,
+        element: <ProductsLayout />,
+        children: [
+          {
+            index: true,
+            element: <Products />,
+            loader: ProductsLoader,
+          },
+          {
+            path: ':id',
+            element: <ProductDetail />,
+            loader: ProductLoader,
+          },
+        ],
       },
       {
         path: '/about',

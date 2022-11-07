@@ -10,3 +10,14 @@ export const getProducts = async () => {
 
   return response.json();
 };
+
+export const getProduct = async id => {
+  const response = await Promise.race([
+    fetch(`${BASE_URL}/products/${id}`),
+    timeout(),
+  ]);
+
+  if (!response.ok) throw new Error(`Error loading product with id ${id}`);
+
+  return response.json();
+};

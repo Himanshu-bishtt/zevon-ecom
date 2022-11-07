@@ -1,0 +1,68 @@
+@import '../../sass/Variables.scss';
+
+.product {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  margin: 3rem 2rem;
+  column-gap: 2rem;
+  align-items: center;
+}
+
+.image {
+  height: 25rem;
+  width: max-content;
+  justify-self: center;
+  padding: 1rem;
+}
+
+.content {
+  background-color: $color-white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding: 1rem;
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+  }
+
+  .stars {
+    font-size: 1rem;
+    background-color: $color-grey;
+    color: $color-white;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+  }
+
+  .count {
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .price {
+    font-size: 1.5rem;
+    color: $color-3;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .other-info {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}

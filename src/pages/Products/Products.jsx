@@ -1,5 +1,5 @@
 import React, { Suspense, useState } from 'react';
-import { defer, useLoaderData, Await } from 'react-router-dom';
+import { defer, useLoaderData, Await, useNavigate } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import Product from '../../components/Product/Product';
 import classes from './Products.module.scss';
@@ -12,6 +12,10 @@ const Products = () => {
   const priceRangeHandler = event => {
     setPriceSliderValue(event.nativeEvent.target.value);
   };
+
+  // const productHandler = () => {
+  //   const navigate = useNavigate();
+  // }
   return (
     <div className={classes.products}>
       <div className={classes.banner}>
@@ -84,6 +88,7 @@ const Products = () => {
                     {...item}
                     rate={item.rating.rate}
                     count={item.rating.count}
+                    // onClick={productHandler}
                   />
                 ))
               }

@@ -14,9 +14,6 @@ const Products = () => {
     setPriceSliderValue(event.nativeEvent.target.value);
   };
 
-  // const productHandler = () => {
-  //   const navigate = useNavigate();
-  // }
   return (
     <div className={classes.products}>
       <div className={classes.banner}>
@@ -37,6 +34,10 @@ const Products = () => {
           </div>
           <div className={classes['filter-category']}>
             <h3>Category</h3>
+            <div className={classes['filter-category-controls']}>
+              <input type="radio" name="category" id="all" />
+              <label htmlFor="all">All</label>
+            </div>
             <div className={classes['filter-category-controls']}>
               <input type="radio" name="category" id="men" />
               <label htmlFor="men">Men</label>
@@ -89,7 +90,6 @@ const Products = () => {
                     {...item}
                     rate={item.rating.rate}
                     count={item.rating.count}
-                    // onClick={productHandler}
                   />
                 ))
               }

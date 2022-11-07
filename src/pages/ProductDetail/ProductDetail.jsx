@@ -71,6 +71,6 @@ const ProductDetail = () => {
 
 export default ProductDetail;
 
-export const loader = ({ _, params }) => {
+export const loader = ({ params }) => {
   return getProduct(params.id);
 };

@@ -1,0 +1,81 @@
+@import '../../sass/Variables.scss';
+
+.top {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+  margin: 2rem;
+  padding: 2rem;
+
+  @media only screen and (max-width: $bp-laptop) {
+    flex-direction: column;
+  }
+}
+
+.image {
+  height: 20rem;
+  width: 40rem;
+}
+
+.content {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.9;
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2rem;
+  padding: 2rem 2rem 5rem 2rem;
+  background-color: $color-white;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .items {
+    display: flex;
+    align-items: center;
+    column-gap: 3rem;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+
+    img {
+      height: 10rem;
+      width: 10rem;
+      border-radius: 50%;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: bold;
+      color: $color-3;
+    }
+
+    .social {
+      display: flex;
+      column-gap: 0.5rem;
+
+      svg {
+        height: 1.2rem;
+        width: 1.2rem;
+        // background-color: #fff;
+        // padding: 0.3rem;
+        // border-radius: 50%;
+      }
+    }
+  }
+}

@@ -16,7 +16,7 @@ const Product = ({ id, title, price, image, category, rate, count }) => {
             <h3>{category}</h3>
             <h2 title={title}>{title}</h2>
           </div>
-          <p className={classes.price}>${price}</p>
+          <h2 className={classes.price}>${price}</h2>
 
           <div className={classes.rating}>
             <p className={classes.stars}>{rate} ⭐</p>

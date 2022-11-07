@@ -1,6 +1,7 @@
 import React, { Suspense, useState } from 'react';
 import { defer, useLoaderData, Await, useNavigate } from 'react-router-dom';
 import { getProducts } from '../../api/api';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import Product from '../../components/Product/Product';
 import classes from './Products.module.scss';
 
@@ -76,7 +77,7 @@ const Products = () => {
           </div>
         </div>
         <div className={classes.items}>
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<LoadingSpinner />}>
             <Await
               resolve={loaderData.products}
               errorElement={<h1>Some error occurred while loading data</h1>}

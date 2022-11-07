@@ -60,6 +60,7 @@ const Products = () => {
                 min={0}
                 max={1000}
                 onChange={priceRangeHandler}
+                value={priceSliderValue}
               />
               <input
                 value={`$${Number(priceSliderValue).toFixed(2)}`}

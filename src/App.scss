@@ -1,0 +1,14 @@
+@import './sass/Variables.scss';
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: $color-white;
+  border: 3px solid $color-3;
+  transition: background-color 0.25s;
+
+  &:hover {
+    background-color: $color-3;
+  }
+}

@@ -1,13 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
 import classes from './Hero.module.scss';
-import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <div className={classes.hero}>
+    <>
       <Carousel
         swipeable={true}
         emulateTouch={true}
@@ -32,7 +32,7 @@ const Hero = () => {
           </Link>
         </div>
       </Carousel>
-    </div>
+    </>
   );
 };
 

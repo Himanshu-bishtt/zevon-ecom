@@ -6,18 +6,10 @@ import Collections, {
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Hero />
-      {/* <Suspense fallback={<p>Loading...</p>}>
-        <Await
-          resolve={loaderData.men}
-          errorElement={<h1>Something went wrong</h1>}
-        >
-          {resolveData => <Collections data={resolveData} />}
-        </Await>
-      </Suspense> */}
       <Collections />
-    </div>
+    </>
   );
 };
 

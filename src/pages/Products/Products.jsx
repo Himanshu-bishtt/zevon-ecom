@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import { defer, useLoaderData, Await } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
@@ -8,74 +8,91 @@ import classes from './Products.module.scss';
 const Products = () => {
   const loaderData = useLoaderData();
 
-  const [priceSliderValue, setPriceSliderValue] = useState(0);
+  const filterPosition = (
+    <div className={classes['filter-position']}>
+      <h3>Position</h3>
+      <div className={classes['filter-position-controls']}>
+        <input type="radio" name="position" id="asc" />
+        <label htmlFor="asc">Asceding</label>
+      </div>
+      <div className={classes['filter-position-controls']}>
+        <input type="radio" name="position" id="desc" />
+        <label htmlFor="desc">Decending</label>
+      </div>
+    </div>
+  );
 
-  const priceRangeHandler = event => {
-    setPriceSliderValue(event.nativeEvent.target.value);
-  };
+  const filterCategory = (
+    <div className={classes['filter-category']}>
+      <h3>Category</h3>
+      <div className={classes['filter-category-controls']}>
+        <input type="radio" name="category" id="all" />
+        <label htmlFor="all">All</label>
+      </div>
+      <div className={classes['filter-category-controls']}>
+        <input type="radio" name="category" id="men" />
+        <label htmlFor="men">Men</label>
+      </div>
+      <div className={classes['filter-category-controls']}>
+        <input type="radio" name="category" id="women" />
+        <label htmlFor="women">Women</label>
+      </div>
+      <div className={classes['filter-category-controls']}>
+        <input type="radio" name="category" id="electronics" />
+        <label htmlFor="electronics">Electronics</label>
+      </div>
+      <div className={classes['filter-category-controls']}>
+        <input type="radio" name="category" id="jewellery" />
+        <label htmlFor="jewellery">Jewellery</label>
+      </div>
+    </div>
+  );
+
+  const filterPrice = (
+    <div className={classes['filter-price']}>
+      <h3>Price</h3>
+      {/* <div className={classes['filter-price-controls']}>
+        <input
+          type="range"
+          name="price"
+          id="price"
+          min={0}
+          max={1000}
+          onChange={priceRangeHandler}
+          value={priceSliderValue}
+        />
+        <input
+          value={`$${Number(priceSliderValue).toFixed(2)}`}
+          type="text"
+          readOnly
+          className={classes['filter-price-value']}
+        />
+      </div> */}
+      <div className={classes['filter-price-controls']}>
+        <input type="radio" name="price" id="under 500" />
+        <label htmlFor="under 500">Under $500</label>
+      </div>
+      <div className={classes['filter-price-controls']}>
+        <input type="radio" name="price" id="under 750" />
+        <label htmlFor="under 750">Under $750</label>
+      </div>
+      <div className={classes['filter-price-controls']}>
+        <input type="radio" name="price" id="under 1000" />
+        <label htmlFor="under 1000">Under $1000</label>
+      </div>
+    </div>
+  );
 
   return (
-    <div className={classes.products}>
+    <>
       <div className={classes.banner}>
         <h1>Products</h1>
       </div>
       <div className={classes.main}>
         <div className={classes.filters}>
-          <div className={classes['filter-position']}>
-            <h3>Position</h3>
-            <div className={classes['filter-position-controls']}>
-              <input type="radio" name="position" id="asc" />
-              <label htmlFor="asc">Asceding</label>
-            </div>
-            <div className={classes['filter-position-controls']}>
-              <input type="radio" name="position" id="desc" />
-              <label htmlFor="desc">Decending</label>
-            </div>
-          </div>
-          <div className={classes['filter-category']}>
-            <h3>Category</h3>
-            <div className={classes['filter-category-controls']}>
-              <input type="radio" name="category" id="all" />
-              <label htmlFor="all">All</label>
-            </div>
-            <div className={classes['filter-category-controls']}>
-              <input type="radio" name="category" id="men" />
-              <label htmlFor="men">Men</label>
-            </div>
-            <div className={classes['filter-category-controls']}>
-              <input type="radio" name="category" id="women" />
-              <label htmlFor="women">Women</label>
-            </div>
-            <div className={classes['filter-category-controls']}>
-              <input type="radio" name="category" id="electronics" />
-              <label htmlFor="electronics">Electronics</label>
-            </div>
-            <div className={classes['filter-category-controls']}>
-              <input type="radio" name="category" id="jewellery" />
-              <label htmlFor="jewellery">Jewellery</label>
-            </div>
-          </div>
-
-          <div className={classes['filter-price']}>
-            <h3>Price</h3>
-            <div className={classes['filter-price-controls']}>
-              <input
-                type="range"
-                name="price"
-                id="price"
-                min={0}
-                max={1000}
-                onChange={priceRangeHandler}
-                value={priceSliderValue}
-              />
-              <input
-                value={`$${Number(priceSliderValue).toFixed(2)}`}
-                type="text"
-                readOnly
-                className={classes['filter-price-value']}
-              />
-            </div>
-          </div>
+          {filterPosition}
+          {filterCategory}
+          {filterPrice}
         </div>
         <div className={classes.items}>
           <Suspense fallback={<LoadingSpinner />}>
@@ -97,7 +114,7 @@ const Products = () => {
           </Suspense>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -2,7 +2,7 @@
 
 .collections {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   margin: 2rem;
   column-gap: 2rem;
   row-gap: 3rem;

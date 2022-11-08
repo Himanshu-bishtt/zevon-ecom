@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react';
 import { Link, Await, defer, useLoaderData } from 'react-router-dom';
 import Product from '../Product/Product';
-import { getCategoryProducts } from '../../api/api';
-import { menBanner, womenBanner } from '../../assets';
-
-import classes from './Collections.module.scss';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { getCategoryProducts } from '../../api/api';
+
+import { menBanner, womenBanner } from '../../assets';
+import classes from './Collections.module.scss';
 
 const Collections = () => {
   const loaderData = useLoaderData();

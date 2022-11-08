@@ -1,0 +1,47 @@
+@import '../../sass/Variables.scss';
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  margin: 10rem 2rem 6rem 2rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 5px;
+
+  &:nth-child(odd) {
+    background-color: $color-white;
+  }
+
+  svg {
+    height: 2rem;
+    width: 2rem;
+    padding: 1rem;
+    background-color: $color-1;
+    fill: $color-white;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    color: $color-3;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+}

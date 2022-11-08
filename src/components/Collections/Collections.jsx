@@ -1,41 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { Link, Await, defer, useLoaderData } from 'react-router-dom';
 import Product from '../Product/Product';
+import { getCategoryProducts } from '../../api/api';
 import { menBanner, womenBanner } from '../../assets';
+
 import classes from './Collections.module.scss';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
-const Collections = ({ data }) => {
-  const { men, women } = data;
-
-  console.log(men);
-
-  const menProducts = men.map((product, index) => {
-    if (index >= 2) return;
-    return (
-      <Product
-        key={product.id}
-        {...product}
-        rate={product.rating.rate}
-        count={product.rating.count}
-      />
-    );
-  });
-
-  const womenProducts = women.map((product, index) => {
-    if (index >= 2) return;
-    return (
-      <Product
-        key={product.id}
-        {...product}
-        rate={product.rating.rate}
-        count={product.rating.count}
-      />
-    );
-  });
+const Collections = () => {
+  const loaderData = useLoaderData();
+  console.log(loaderData);
 
   return (
     <section className={classes.collections}>
-      <div className={classes['women-products']}>{womenProducts}</div>
+      <div className={classes['women-products']}>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Await
+            resolve={loaderData.women}
+            errorElement={<h1>Error loading category products</h1>}
+          >
+            {resolvedData =>
+              resolvedData.map(
+                (product, index) =>
+                  index < 2 && (
+                    <Product
+                      key={product.id}
+                      {...product}
+                      rate={product.rating.rate}
+                      count={product.rating.count}
+                      customURL={`products/${product.id.toString()}`}
+                    />
+                  )
+              )
+            }
+          </Await>
+        </Suspense>
+      </div>
       <div className={classes['women-banner']}>
         <img src={womenBanner} alt="women banner" />
         <div className={classes['banner-content']}>
@@ -56,9 +56,38 @@ const Collections = ({ data }) => {
           </Link>
         </div>
       </div>
-      <div className={classes['men-products']}>{menProducts}</div>
+      <div className={classes['men-products']}>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Await
+            resolve={loaderData.men}
+            errorElement={<h1>Error loading category products</h1>}
+          >
+            {resolvedData =>
+              resolvedData.map(
+                (product, index) =>
+                  index < 2 && (
+                    <Product
+                      key={product.id}
+                      {...product}
+                      rate={product.rating.rate}
+                      count={product.rating.count}
+                      customURL={`products/${product.id.toString()}`}
+                    />
+                  )
+              )
+            }
+          </Await>
+        </Suspense>
+      </div>
     </section>
   );
 };
 
 export default Collections;
+
+export const loader = () => {
+  return defer({
+    men: getCategoryProducts("men's clothing"),
+    women: getCategoryProducts("women's clothing"),
+  });
+};

@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
-    errorElement: <h1>Some error occurred!</h1>,
+    errorElement: <h1>Some error occurred! Coming from root!</h1>,
     children: [
       { index: true, element: <Home />, loader: LimitProductsLoader },
       {

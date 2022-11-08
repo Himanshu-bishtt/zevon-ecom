@@ -41,5 +41,5 @@ export const getCategoryProducts = async category => {
 
   if (!response.ok) throw new Error(`Error loading products!`);
 
-  return response.json();
+  return await response.json();
 };

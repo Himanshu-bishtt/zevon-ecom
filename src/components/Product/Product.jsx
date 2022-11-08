@@ -2,9 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './Product.module.scss';
 
-const Product = ({ id, title, price, image, category, rate, count }) => {
+const Product = ({
+  id,
+  title,
+  price,
+  image,
+  category,
+  rate,
+  count,
+  customURL = id.toString(),
+}) => {
   return (
-    <Link to={id.toString()}>
+    <Link to={customURL}>
       <div className={classes.product}>
         <img
           src={image}

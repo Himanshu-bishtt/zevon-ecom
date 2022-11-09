@@ -19,15 +19,23 @@ const Hero = () => {
           <h1 className={classes['hero-heading']}>
             Best Clothes at affordable price
           </h1>
-          <Link to={'/products'} className={classes.btn}>
+          <p className={classes['hero-text']}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Consequatur, eius?
+          </p>
+          <Link to={'/products'} className="btn">
             Show Now
           </Link>
         </div>
         <div className={classes.item2}>
           <h1 className={classes['hero-heading']}>
-            Quick easy and hassle free transactions
+            easy & hassle free transactions
           </h1>
-          <Link to={'/products'} className={classes.btn}>
+          <p className={classes['hero-text']}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Consequatur, eius?
+          </p>
+          <Link to={'/products'} className="btn">
             Show Now
           </Link>
         </div>

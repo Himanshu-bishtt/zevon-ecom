@@ -1,0 +1,41 @@
+@import '../../sass/Variables.scss';
+
+.pageNotFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  height: 30rem;
+  background-position: center;
+}
+
+.content {
+  color: $color-grey;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4rem;
+  margin-top: -5rem;
+  z-index: 1;
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  a {
+    color: $color-3;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+}

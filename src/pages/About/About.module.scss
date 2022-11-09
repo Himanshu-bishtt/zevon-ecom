@@ -18,14 +18,11 @@
 }
 
 .content {
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
   p {
     font-size: 1rem;
     line-height: 1.9;
+    margin-top: 0.4rem;
+    color: $color-grey;
   }
 }
 
@@ -36,10 +33,6 @@
   row-gap: 2rem;
   padding: 2rem 2rem 5rem 2rem;
   background-color: $color-white;
-
-  h1 {
-    font-size: 2rem;
-  }
 
   .items {
     display: flex;

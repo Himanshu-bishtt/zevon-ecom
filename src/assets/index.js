@@ -4,6 +4,7 @@ import heroBanner2 from './hero-banner-2.jpg';
 import logo from './logo.png';
 import menBanner from './men-banner.jpg';
 import womenBanner from './women-banner.jpg';
+import pageNotFound from './page-not-found.gif';
 import person1 from './person1.jpg';
 import person2 from './person2.jpg';
 import person3 from './person3.jpg';
@@ -15,6 +16,7 @@ export {
   menBanner,
   womenBanner,
   logo,
+  pageNotFound,
   person1,
   person2,
   person3,

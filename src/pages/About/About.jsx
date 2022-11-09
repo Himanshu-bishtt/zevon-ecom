@@ -10,7 +10,7 @@ const About = () => {
       <div className={classes.top}>
         <img className={classes.image} src={aboutUs} alt="about us page" />
         <div className={classes.content}>
-          <h1>About Us</h1>
+          <h1 className="main-heading">About Us</h1>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus
             placeat vitae similique tempore possimus, nostrum nam maiores. Totam
@@ -27,7 +27,7 @@ const About = () => {
         </div>
       </div>
       <div className={classes.bottom}>
-        <h1>Team</h1>
+        <h1 className="main-heading">Team</h1>
         <div className={classes.items}>
           <div className={classes.item}>
             <img src={person1} alt="person 1" />

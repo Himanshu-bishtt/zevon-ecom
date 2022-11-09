@@ -2,8 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { logo } from '../../assets';
-
-import { CartIcon, WishlistIcon, UserIcon } from '../../icons';
+import { CartIcon, WishlistIcon, SearchIcon, UserIcon } from '../../icons';
 import classes from './MainNavigation.module.scss';
 
 const MainNavigation = () => {
@@ -41,6 +40,10 @@ const MainNavigation = () => {
         <button>
           <CartIcon className={classes.logo} />
           Cart
+        </button>
+        <button>
+          <SearchIcon className={classes.logo} />
+          Search
         </button>
         <button>
           <WishlistIcon className={classes.logo} />

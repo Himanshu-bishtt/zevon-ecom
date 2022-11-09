@@ -6,15 +6,10 @@
   flex-direction: column;
   padding: 1rem 0 0 0;
   border-radius: 10px;
-  cursor: pointer;
   height: max-content;
-  background-color: $color-white;
+  border: 1px solid $color-white;
   transition: all 0.5s;
   animation: slide-right 0.5s ease;
-}
-
-.product:hover {
-  transform: translateY(-0.5rem);
 }
 
 @keyframes slide-right {
@@ -43,6 +38,10 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 1rem;
+}
+
+.head a:hover {
+  color: $color-1;
 }
 
 .head h3 {
@@ -86,4 +85,26 @@
   border-bottom-right-radius: 10px;
   margin-top: 0.5rem;
   font-weight: bold;
+}
+
+.wishlist {
+  position: absolute;
+  background-color: transparent;
+  top: 4%;
+  left: 4%;
+  height: 1.7rem;
+  width: 1.7rem;
+  padding: 0;
+  border-radius: 50%;
+  z-index: 10;
+  cursor: pointer;
+
+  svg {
+    color: $color-grey;
+  }
+
+  &:hover > svg {
+    fill: $color-red;
+    color: $color-red;
+  }
 }

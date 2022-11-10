@@ -41,7 +41,7 @@
 }
 
 .head a:hover {
-  color: $color-1;
+  color: $color-red;
 }
 
 .head h3 {
@@ -100,11 +100,10 @@
   cursor: pointer;
 
   svg {
-    color: $color-grey;
+    color: $color-red;
   }
 
   &:hover > svg {
     fill: $color-red;
-    color: $color-red;
   }
 }

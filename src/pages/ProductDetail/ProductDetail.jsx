@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { Suspense, useState } from 'react';
+import { Await, defer, useLoaderData } from 'react-router-dom';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import { getProduct } from '../../api/api';
-import { Icons } from '../../icons';
+import { Icons, WishlistIcon } from '../../icons';
 
 import classes from './ProductDetail.module.scss';
 
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
-  const { id, title, price, description, rating, category, image } =
-    useLoaderData();
+  const loaderData = useLoaderData();
+
+  console.log(loaderData);
 
   const quantityIncreaseHandler = () => {
     if (quantity === 10) return;
@@ -20,26 +22,26 @@ const ProductDetail = () => {
     setQuantity(prev => prev - 1);
   };
 
-  return (
+  const renderProductDetail = data => (
     <div className={classes.product}>
-      <img className={`${classes.image}`} src={image} />
+      <img className={`${classes.image}`} src={data.image} />
       <div className={classes.content}>
-        <h2 className={classes.category}>{category}</h2>
-        <h1 className={classes.heading}>{title}</h1>
+        <h2 className={classes.category}>{data.category}</h2>
+        <h1 className={classes.heading}>{data.title}</h1>
         <div className={classes.rating}>
-          <p className={classes.stars}>{rating.rate} ⭐</p>
-          <p className={classes.count}>({rating.count})</p>
+          <p className={classes.stars}>{data.rating.rate} ⭐</p>
+          <p className={classes.count}>({data.rating.count})</p>
         </div>
 
-        <h2 className={classes.price}>${Number(price).toFixed(2)}</h2>
-        <p className={classes.description}>{description}</p>
+        <h2 className={classes.price}>${Number(data.price).toFixed(2)}</h2>
+        <p className={classes.description}>{data.description}</p>
 
         <div className={classes['other-info']}>
           <p>
-            ID: <span>{id}</span>
+            ID: <span>{data.id}</span>
           </p>
           <p>
-            Category: <span>{category}</span>
+            Category: <span>{data.category}</span>
           </p>
         </div>
 
@@ -63,14 +65,29 @@ const ProductDetail = () => {
             </svg>
             Buy Now
           </button>
+          <button className={classes.wishlist} title="Wishlist this item">
+            <WishlistIcon />
+            Wishlist
+          </button>
         </div>
       </div>
     </div>
+  );
+
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <Await
+        resolve={loaderData.product}
+        errorElement={<h1>Some error occurred while loading the product</h1>}
+      >
+        {resolvedData => renderProductDetail(resolvedData)}
+      </Await>
+    </Suspense>
   );
 };
 
 export default ProductDetail;
 
 export const loader = ({ params }) => {
-  return getProduct(params.id);
+  return defer({ product: getProduct(params.id) });
 };

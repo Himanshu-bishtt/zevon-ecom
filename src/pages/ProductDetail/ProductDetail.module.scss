@@ -1,6 +1,7 @@
 @import '../../sass/Variables.scss';
 
 .product {
+  position: relative;
   display: grid;
   grid-template-columns: 2fr 3fr;
   margin: 3rem 2rem;
@@ -9,8 +10,8 @@
 }
 
 .image {
-  height: 25rem;
-  width: 25rem;
+  height: 20rem;
+  width: 20rem;
   justify-self: center;
   padding: 1rem;
 }
@@ -128,5 +129,24 @@
     svg {
       fill: $color-white;
     }
+  }
+}
+
+.wishlist {
+  position: absolute;
+  background-color: transparent;
+  top: 6%;
+  right: 2%;
+  z-index: 10;
+  cursor: pointer;
+
+  svg {
+    height: 2rem;
+    width: 2rem;
+    color: $color-red;
+  }
+
+  &:hover > svg {
+    fill: $color-red;
   }
 }

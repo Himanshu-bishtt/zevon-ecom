@@ -8,6 +8,10 @@ import pageNotFound from './page-not-found.gif';
 import person1 from './person1.jpg';
 import person2 from './person2.jpg';
 import person3 from './person3.jpg';
+import whatsapp from './whatsapp.png';
+import telegram from './telegram.png';
+import facebook from './facebook.png';
+import instagram from './instagram.png';
 
 export {
   aboutUs,
@@ -20,4 +24,8 @@ export {
   person1,
   person2,
   person3,
+  whatsapp,
+  telegram,
+  facebook,
+  instagram,
 };

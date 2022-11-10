@@ -2,15 +2,14 @@ import React, { Suspense, useState } from 'react';
 import { Await, defer, useLoaderData } from 'react-router-dom';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import { getProduct } from '../../api/api';
-import { Icons, WishlistIcon } from '../../icons';
 
+import { whatsapp, telegram, instagram, facebook } from '../../assets';
+import { Icons, WishlistIcon } from '../../icons';
 import classes from './ProductDetail.module.scss';
 
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const loaderData = useLoaderData();
-
-  console.log(loaderData);
 
   const quantityIncreaseHandler = () => {
     if (quantity === 10) return;
@@ -69,6 +68,22 @@ const ProductDetail = () => {
             <WishlistIcon />
             Wishlist
           </button>
+        </div>
+
+        <div className={classes.social}>
+          <p>Share:</p>
+          <a href="#">
+            <img src={telegram} />
+          </a>
+          <a href="#">
+            <img src={whatsapp} />
+          </a>
+          <a href="#">
+            <img src={facebook} />
+          </a>
+          <a href="#">
+            <img src={instagram} />
+          </a>
         </div>
       </div>
     </div>

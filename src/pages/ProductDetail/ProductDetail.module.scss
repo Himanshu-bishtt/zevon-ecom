@@ -1,9 +1,8 @@
 @import '../../sass/Variables.scss';
 
 .product {
-  position: relative;
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   margin: 3rem 2rem;
   column-gap: 2rem;
   align-items: center;
@@ -17,125 +16,128 @@
 }
 
 .content {
+  position: relative;
   background-color: $color-white;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
   padding: 3rem 2rem;
+}
 
-  .category {
-    background-color: $color-3;
-    color: $color-white;
+.category {
+  background-color: $color-3;
+  color: $color-white;
+  padding: 0.5rem;
+  align-self: flex-start;
+  border-radius: 5px;
+}
+
+.heading {
+  font-size: 2rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.stars {
+  font-size: 1rem;
+  background-color: $color-grey;
+  color: $color-white;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+}
+
+.count {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: $color-3;
+  margin-top: 2rem;
+}
+
+.description {
+  font-size: 1rem;
+}
+
+.other-info {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  margin-top: 2rem;
+
+  span {
+    font-weight: bold;
+  }
+}
+
+.actions {
+  display: flex;
+  column-gap: 1rem;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+
+  button {
+    border: 1px solid #fff;
     padding: 0.5rem;
-    align-self: flex-start;
-    border-radius: 5px;
+    cursor: pointer;
   }
 
-  .heading {
-    font-size: 2rem;
-  }
-
-  .rating {
-    display: flex;
-    align-items: center;
-    column-gap: 0.5rem;
-  }
-
-  .stars {
-    font-size: 1rem;
-    background-color: $color-grey;
-    color: $color-white;
-    padding: 0.3rem 0.5rem;
-    border-radius: 5px;
-  }
-
-  .count {
-    font-size: 0.9rem;
-    font-weight: bold;
-  }
-
-  .price {
-    font-size: 1.5rem;
-    color: $color-3;
-    margin-top: 2rem;
-  }
-
-  .description {
-    font-size: 1rem;
-  }
-
-  .other-info {
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.5rem;
-    margin-top: 2rem;
-
-    span {
-      font-weight: bold;
-    }
-  }
-
-  .actions {
-    display: flex;
-    column-gap: 1rem;
-    font-weight: bold;
-    margin-top: 2rem;
+  p {
+    border: 1px solid #fff;
+    padding: 0.5rem 1rem;
   }
 
   svg {
+    border-radius: 50%;
     height: 1.5rem;
     width: 1.5rem;
   }
+}
 
-  .quantity {
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
+.buy {
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
+  font-size: 1rem;
+  background-color: $color-3;
+  color: $color-white;
+  border-radius: 5px;
+  padding: 0 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.5s;
 
-    button {
-      border: 1px solid #fff;
-      padding: 0.5rem;
-      cursor: pointer;
-    }
-
-    p {
-      border: 1px solid #fff;
-      padding: 0.5rem 1rem;
-    }
-
-    svg {
-      border-radius: 50%;
-    }
+  &:hover {
+    background-color: $color-black;
   }
 
-  .buy {
-    display: flex;
-    align-items: center;
-    column-gap: 0.4rem;
-    font-size: 1rem;
-    background-color: $color-3;
-    color: $color-white;
-    border-radius: 5px;
-    padding: 0 0.6rem;
-    cursor: pointer;
-    transition: background-color 0.5s;
-
-    &:hover {
-      background-color: $color-black;
-    }
-
-    svg {
-      fill: $color-white;
-    }
+  svg {
+    fill: $color-white;
+    height: 1.5rem;
+    width: 1.5rem;
   }
 }
 
 .wishlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   background-color: transparent;
-  top: 6%;
+  top: 5%;
   right: 2%;
   z-index: 10;
   cursor: pointer;
@@ -148,5 +150,22 @@
 
   &:hover > svg {
     fill: $color-red;
+  }
+}
+
+.social {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+
+  p {
+    font-size: 1rem;
+    color: $color-3;
+  }
+
+  img {
+    height: 1.8rem;
+    width: 1.8rem;
   }
 }

@@ -103,6 +103,8 @@ const ProductDetail = () => {
 
 export default ProductDetail;
 
-export const loader = ({ params }) => {
+export const loader = ({ request, params }) => {
+  console.log(request);
+  console.log(params);
   return defer({ product: getProduct(params.id) });
 };

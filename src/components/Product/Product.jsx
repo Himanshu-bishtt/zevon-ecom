@@ -12,7 +12,7 @@ const Product = ({
   category,
   rate,
   count,
-  customURL = id.toString(),
+  customURL = `${category.replaceAll(' ', '-')}/${id.toString()}`,
 }) => {
   return (
     <div className={classes.product}>

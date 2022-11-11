@@ -28,7 +28,10 @@ const Collections = () => {
                       {...product}
                       rate={product.rating.rate}
                       count={product.rating.count}
-                      customURL={`products/${product.id.toString()}`}
+                      customURL={`products/${product.category.replaceAll(
+                        ' ',
+                        '-'
+                      )}/${product.id.toString()}`}
                     />
                   )
               )
@@ -71,7 +74,10 @@ const Collections = () => {
                       {...product}
                       rate={product.rating.rate}
                       count={product.rating.count}
-                      customURL={`products/${product.id.toString()}`}
+                      customURL={`products/${product.category.replaceAll(
+                        ' ',
+                        '-'
+                      )}/${product.id.toString()}`}
                     />
                   )
               )

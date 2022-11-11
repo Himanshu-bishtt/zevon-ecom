@@ -170,3 +170,22 @@
     width: 1.8rem;
   }
 }
+
+///////////////// featured products ////////////////////
+
+.featured-products {
+  margin-top: 6rem;
+  margin-bottom: 4rem;
+  margin: 6rem 2rem 4rem 2rem;
+
+  h1 {
+    text-align: center;
+  }
+
+  .products {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 2rem;
+  }
+}

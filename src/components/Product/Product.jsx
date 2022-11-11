@@ -14,7 +14,6 @@ const Product = ({
   count,
   customURL = `${category.replaceAll(' ', '-')}/${id.toString()}`,
 }) => {
-  console.log('Product running');
   return (
     <div className={classes.product}>
       <img

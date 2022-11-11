@@ -9,7 +9,6 @@ import classes from './Collections.module.scss';
 
 const Collections = () => {
   const loaderData = useLoaderData();
-  console.log(loaderData);
 
   return (
     <section className={classes.collections}>

@@ -1,18 +1,18 @@
+/* eslint-disable react/prop-types */
 import React, { Suspense, useState } from 'react';
 import { Await, defer, useLoaderData } from 'react-router-dom';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 import { getCategoryProducts, getProduct } from '../../api/api';
 
 import { whatsapp, telegram, instagram, facebook } from '../../assets';
 import { Icons, WishlistIcon } from '../../icons';
 import classes from './ProductDetail.module.scss';
-import Product from '../../components/Product/Product';
 
-const ProductDetail = () => {
+const RenderProductDetail = ({ data }) => {
+  console.log('Render product dtail');
+  console.log(data);
   const [quantity, setQuantity] = useState(1);
-  const loaderData = useLoaderData();
-
-  console.log(loaderData);
 
   const quantityIncreaseHandler = () => {
     if (quantity === 10) return;
@@ -24,7 +24,7 @@ const ProductDetail = () => {
     setQuantity(prev => prev - 1);
   };
 
-  const renderProductDetail = data => (
+  return (
     <div className={classes.product}>
       <img className={`${classes.image}`} src={data.image} />
       <div className={classes.content}>
@@ -91,48 +91,26 @@ const ProductDetail = () => {
       </div>
     </div>
   );
+};
 
-  const renderFeatureProduts = data => (
-    <div className={classes['featured-products']}>
-      <h1 className="main-heading">Featured Products</h1>
-      <div className={classes.products}>
-        {data.map(product => (
-          <Product
-            key={product.id}
-            id={product.id}
-            title={product.title}
-            category={product.category}
-            image={product.image}
-            price={product.price}
-            rate={product.rating.rate}
-            count={product.rating.count}
-            customURL={`/products/${product.category.replaceAll(' ', '-')}/${
-              product.id
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
+const ProductDetail = () => {
+  const loaderData = useLoaderData();
 
   return (
+    //prettier-ignore
     <>
       <Suspense fallback={<LoadingSpinner />}>
         <Await
           resolve={loaderData.product}
-          errorElement={<h1>Some error occurred while loading the product</h1>}
-        >
-          {resolvedData => renderProductDetail(resolvedData)}
+          errorElement={<h1>Some error occurred while loading the product</h1>}>
+          {resolvedData => <RenderProductDetail data={resolvedData}/>}
         </Await>
       </Suspense>
       <Suspense fallback={<LoadingSpinner />}>
         <Await
           resolve={loaderData.category}
-          errorElement={
-            <h1>Some error occurred while loading featured products!</h1>
-          }
-        >
-          {resolvedData => renderFeatureProduts(resolvedData)}
+          errorElement={<h1>Some error occurred while loading featured products!</h1>}>
+          {resolvedData => <FeaturedProducts data={resolvedData} />}
         </Await>
       </Suspense>
     </>

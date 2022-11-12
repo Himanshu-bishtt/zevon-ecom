@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleSearchBar } from '../../store/ui-slice';
 import Backdrop from '../UI/Backdrop/Backdrop';
 
 import { logo } from '../../assets';
@@ -8,16 +10,17 @@ import classes from './MainNavigation.module.scss';
 import Search from '../Search/Search';
 
 const MainNavigation = () => {
-  const [search, showSearch] = useState(false);
+  const dispatch = useDispatch();
+  const { showSearch } = useSelector(store => store.ui);
+
   const searchHandler = () => {
-    console.log('Search handler');
-    showSearch(prev => !prev);
+    dispatch(toggleSearchBar());
   };
 
   return (
     <>
-      {search && <Backdrop />}
-      {search && <Search />}
+      {showSearch && <Backdrop />}
+      {showSearch && <Search />}
       <header className={classes.header}>
         <ul className={classes.menu}>
           <li>

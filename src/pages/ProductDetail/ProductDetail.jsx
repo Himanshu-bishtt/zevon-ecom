@@ -75,16 +75,16 @@ const RenderProductDetail = ({ data }) => {
 
         <div className={classes.social}>
           <p>Share:</p>
-          <a href="#">
+          <a>
             <img src={telegram} />
           </a>
-          <a href="#">
+          <a>
             <img src={whatsapp} />
           </a>
-          <a href="#">
+          <a>
             <img src={facebook} />
           </a>
-          <a href="#">
+          <a>
             <img src={instagram} />
           </a>
         </div>

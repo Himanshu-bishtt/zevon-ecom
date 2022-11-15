@@ -7,6 +7,23 @@ import { getCategoryProducts } from '../../api/api';
 import { menBanner, womenBanner } from '../../assets';
 import classes from './Collections.module.scss';
 
+const renderProducts = data =>
+  data.map(
+    (product, index) =>
+      index < 2 && (
+        <Product
+          key={product.id}
+          {...product}
+          rate={product.rating.rate}
+          count={product.rating.count}
+          customURL={`products/${product.category.replaceAll(
+            ' ',
+            '-'
+          )}/${product.id.toString()}`}
+        />
+      )
+  );
+
 const Collections = () => {
   const loaderData = useLoaderData();
 
@@ -18,23 +35,7 @@ const Collections = () => {
             resolve={loaderData.women}
             errorElement={<h1>Error loading category products</h1>}
           >
-            {resolvedData =>
-              resolvedData.map(
-                (product, index) =>
-                  index < 2 && (
-                    <Product
-                      key={product.id}
-                      {...product}
-                      rate={product.rating.rate}
-                      count={product.rating.count}
-                      customURL={`products/${product.category.replaceAll(
-                        ' ',
-                        '-'
-                      )}/${product.id.toString()}`}
-                    />
-                  )
-              )
-            }
+            {resolvedData => renderProducts(resolvedData)}
           </Await>
         </Suspense>
       </div>
@@ -64,23 +65,7 @@ const Collections = () => {
             resolve={loaderData.men}
             errorElement={<h1>Error loading category products</h1>}
           >
-            {resolvedData =>
-              resolvedData.map(
-                (product, index) =>
-                  index < 2 && (
-                    <Product
-                      key={product.id}
-                      {...product}
-                      rate={product.rating.rate}
-                      count={product.rating.count}
-                      customURL={`products/${product.category.replaceAll(
-                        ' ',
-                        '-'
-                      )}/${product.id.toString()}`}
-                    />
-                  )
-              )
-            }
+            {resolvedData => renderProducts(resolvedData)}
           </Await>
         </Suspense>
       </div>

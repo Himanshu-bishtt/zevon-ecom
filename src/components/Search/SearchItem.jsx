@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleSearchBar } from '../../store/ui-slice';
@@ -8,10 +9,11 @@ import classes from './SearchItem.module.scss';
 const SearchItem = ({ id, title, image, category }) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
-  const imageLoaded = event => {
-    console.log(event);
+
+  const imageLoaded = () => {
     setIsLoading(false);
   };
+
   return (
     <Link
       to={`products/${category.replaceAll(' ', '-')}/${id}`}
@@ -34,6 +36,13 @@ const SearchItem = ({ id, title, image, category }) => {
       </li>
     </Link>
   );
+};
+
+SearchItem.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  category: PropTypes.string,
 };
 
 export default React.memo(SearchItem);

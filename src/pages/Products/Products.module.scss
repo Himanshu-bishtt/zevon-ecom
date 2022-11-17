@@ -74,6 +74,13 @@
   color: $color-white;
   border-radius: 5px;
   font-size: 0.8rem;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: capitalize;
+
+  &:hover {
+    background-color: $color-3;
+  }
 }
 
 .filter-price-value {

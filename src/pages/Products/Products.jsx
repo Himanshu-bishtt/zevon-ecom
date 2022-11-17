@@ -1,24 +1,45 @@
 import React, { Suspense } from 'react';
-import { defer, useLoaderData, Await } from 'react-router-dom';
+import {
+  defer,
+  useLoaderData,
+  Await,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import Product from '../../components/Product/Product';
 import classes from './Products.module.scss';
 
+const sortProducts = (products, ascending) => {
+  return products.sort((productA, productB) => {
+    if (ascending) {
+      return productA.id > productB.id ? 1 : -1;
+    } else {
+      return productA.id < productB.id ? 1 : -1;
+    }
+  });
+};
+
 const Products = () => {
   const loaderData = useLoaderData();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search);
+
+  const isSortingAscending = queryParams.get('sort') === 'asc';
+
+  const positionFilterHandler = () => {
+    navigate(`?sort=${isSortingAscending ? 'desc' : 'asc'}`);
+  };
 
   const filterPosition = (
     <div className={classes['filter-position']}>
       <h3>Position</h3>
-      <div className={classes['filter-position-controls']}>
-        <input type="radio" name="position" id="asc" />
-        <label htmlFor="asc">Asceding</label>
-      </div>
-      <div className={classes['filter-position-controls']}>
-        <input type="radio" name="position" id="desc" />
-        <label htmlFor="desc">Decending</label>
-      </div>
+      <button className={classes.sort} onClick={positionFilterHandler}>
+        Sort {isSortingAscending ? 'desc' : 'asc'}
+      </button>
     </div>
   );
 
@@ -51,23 +72,6 @@ const Products = () => {
   const filterPrice = (
     <div className={classes['filter-price']}>
       <h3>Price</h3>
-      {/* <div className={classes['filter-price-controls']}>
-        <input
-          type="range"
-          name="price"
-          id="price"
-          min={0}
-          max={1000}
-          onChange={priceRangeHandler}
-          value={priceSliderValue}
-        />
-        <input
-          value={`$${Number(priceSliderValue).toFixed(2)}`}
-          type="text"
-          readOnly
-          className={classes['filter-price-value']}
-        />
-      </div> */}
       <div className={classes['filter-price-controls']}>
         <input type="radio" name="price" id="under 500" />
         <label htmlFor="under 500">Under $500</label>
@@ -101,7 +105,7 @@ const Products = () => {
               errorElement={<h1>Some error occurred while loading data</h1>}
             >
               {resolveProducts =>
-                resolveProducts.map(item => (
+                sortProducts(resolveProducts, isSortingAscending).map(item => (
                   <Product
                     key={item.id}
                     {...item}

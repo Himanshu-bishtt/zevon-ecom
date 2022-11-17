@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import Product from '../../components/Product/Product';
+import ProductsList from '../../components/ProductsList/ProductsList';
 import classes from './Products.module.scss';
 
 const sortProducts = (products, ascending) => {
@@ -87,6 +87,7 @@ const Products = () => {
     </div>
   );
 
+  // prettier-ignore
   return (
     <>
       <div className={classes.banner}>
@@ -98,25 +99,17 @@ const Products = () => {
           {filterCategory}
           {filterPrice}
         </div>
-        <div className={classes.items}>
           <Suspense fallback={<LoadingSpinner />}>
             <Await
               resolve={loaderData.products}
-              errorElement={<h1>Some error occurred while loading data</h1>}
-            >
-              {resolveProducts =>
-                sortProducts(resolveProducts, isSortingAscending).map(item => (
-                  <Product
-                    key={item.id}
-                    {...item}
-                    rate={item.rating.rate}
-                    count={item.rating.count}
-                  />
-                ))
-              }
+              errorElement={<h1>Some error occurred while loading data</h1>}>
+              {resolveProducts => (
+                <ProductsList
+                  products={sortProducts(resolveProducts, isSortingAscending)}
+                />
+              )}
             </Await>
           </Suspense>
-        </div>
       </div>
     </>
   );

@@ -62,16 +62,9 @@
   }
 }
 
-.items {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  gap: 2rem;
-}
-
 .sort {
   padding: 0.5rem 1rem;
-  background-color: $color-1;
-  color: $color-white;
+  border: 2px solid $color-3;
   border-radius: 5px;
   font-size: 0.8rem;
   cursor: pointer;
@@ -80,6 +73,7 @@
 
   &:hover {
     background-color: $color-3;
+    color: $color-white;
   }
 }
 

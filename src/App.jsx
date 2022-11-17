@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import RootLayout from './pages/RootLayout';
+import RootLayout from './pages/Layouts/RootLayout';
 import Home, { loader as LimitProductsLoader } from './pages/Home/Home';
 import Products, { loader as ProductsLoader } from './pages/Products/Products';
 import About from './pages/About/About';
@@ -9,7 +9,7 @@ import ProductDetail, {
   loader as ProductLoader,
 } from './pages/ProductDetail/ProductDetail';
 import PageNotFound from './pages/NotFound/PageNotFound';
-import ProductsLayout from './pages/ProductsLayout';
+import ProductsLayout from './pages/Layouts/ProductsLayout';
 
 import './App.scss';
 

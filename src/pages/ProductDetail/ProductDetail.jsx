@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { Suspense, useState } from 'react';
+import PropType from 'prop-types';
 import { Await, defer, useLoaderData } from 'react-router-dom';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
@@ -10,8 +10,6 @@ import { Icons, WishlistIcon } from '../../icons';
 import classes from './ProductDetail.module.scss';
 
 const RenderProductDetail = ({ data }) => {
-  console.log('Render product dtail');
-  console.log(data);
   const [quantity, setQuantity] = useState(1);
 
   const quantityIncreaseHandler = () => {
@@ -125,4 +123,8 @@ export const loader = ({ params }) => {
     product: getProduct(params.id),
     category: getCategoryProducts(category),
   });
+};
+
+RenderProductDetail.propTypes = {
+  data: PropType.object,
 };

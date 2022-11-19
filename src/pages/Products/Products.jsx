@@ -106,21 +106,21 @@ const Products = () => {
         <input
           type="radio"
           name="price"
-          id="under 500"
-          value="500"
+          id="under 100"
+          value="100"
           onChange={priceFilterHandler}
         />
-        <label htmlFor="under 500">Under $500</label>
+        <label htmlFor="under 100">Under $100</label>
       </div>
       <div className={classes['filter-price-controls']}>
         <input
           type="radio"
           name="price"
-          id="under 750"
-          value="750"
+          id="under 500"
+          value="500"
           onChange={priceFilterHandler}
         />
-        <label htmlFor="under 750">Under $750</label>
+        <label htmlFor="under 500">Under $500</label>
       </div>
       <div className={classes['filter-price-controls']}>
         <input

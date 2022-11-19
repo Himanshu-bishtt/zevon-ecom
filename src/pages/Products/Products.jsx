@@ -21,8 +21,6 @@ const Products = () => {
 
   const isSortingAscending = searchParams.get('sort') === 'asc';
 
-  console.log(searchParams.get('sort') === 'asc');
-
   const positionFilterHandler = () => {
     setSearchParams({ sort: isSortingAscending ? 'desc' : 'asc' });
   };
@@ -30,6 +28,10 @@ const Products = () => {
   const cateryFilterHandler = event => {
     console.log(event.target.value);
     setSearchParams({ category: event.target.value });
+  };
+
+  const priceFilterHandler = event => {
+    setSearchParams({ 'price-below': event.target.value });
   };
 
   const filterPosition = (
@@ -101,15 +103,33 @@ const Products = () => {
     <div className={classes['filter-price']}>
       <h3>Price</h3>
       <div className={classes['filter-price-controls']}>
-        <input type="radio" name="price" id="under 500" />
+        <input
+          type="radio"
+          name="price"
+          id="under 500"
+          value="500"
+          onChange={priceFilterHandler}
+        />
         <label htmlFor="under 500">Under $500</label>
       </div>
       <div className={classes['filter-price-controls']}>
-        <input type="radio" name="price" id="under 750" />
+        <input
+          type="radio"
+          name="price"
+          id="under 750"
+          value="750"
+          onChange={priceFilterHandler}
+        />
         <label htmlFor="under 750">Under $750</label>
       </div>
       <div className={classes['filter-price-controls']}>
-        <input type="radio" name="price" id="under 1000" />
+        <input
+          type="radio"
+          name="price"
+          id="under 1000"
+          value="1000"
+          onChange={priceFilterHandler}
+        />
         <label htmlFor="under 1000">Under $1000</label>
       </div>
     </div>
@@ -146,6 +166,15 @@ const Products = () => {
                 const products = resolveProducts.filter(
                   products => products.category === searchParams.get('category')
                 );
+                return <ProductsList products={products} />;
+              }
+
+              if (searchParams.has('price-below')) {
+                const price = searchParams.get('price-below');
+                const products = resolveProducts.filter(
+                  product => product.price <= price
+                );
+
                 return <ProductsList products={products} />;
               }
 

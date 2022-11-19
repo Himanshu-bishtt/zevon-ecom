@@ -51,9 +51,14 @@
 }
 
 .price {
-  font-size: 1rem;
+  font-size: 0.7rem;
   margin: 1rem 0;
-  color: $color-3;
+  color: $color-grey;
+
+  span {
+    font-size: 1rem;
+    color: $color-red;
+  }
 }
 
 .rating {

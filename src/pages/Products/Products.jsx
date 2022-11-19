@@ -26,7 +26,6 @@ const Products = () => {
   };
 
   const cateryFilterHandler = event => {
-    console.log(event.target.value);
     setSearchParams({ category: event.target.value });
   };
 
@@ -155,7 +154,10 @@ const Products = () => {
               if (searchParams.has('sort'))
                 return (
                   <ProductsList
-                    products={sortProducts(resolveProducts, isSortingAscending)}
+                    products={sortProducts(
+                      resolveProducts,
+                      !isSortingAscending
+                    )}
                   />
                 );
 

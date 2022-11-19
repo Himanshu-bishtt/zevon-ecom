@@ -2,7 +2,7 @@ import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import RootLayout from './pages/Layouts/RootLayout';
-import Home, { loader as LimitProductsLoader } from './pages/Home/Home';
+import Home, { loader as CollectionsProductLoader } from './pages/Home/Home';
 import Products, { loader as ProductsLoader } from './pages/Products/Products';
 import About from './pages/About/About';
 import ProductDetail, {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <h1>Some error occurred! Coming from root!</h1>,
     children: [
-      { index: true, element: <Home />, loader: LimitProductsLoader },
+      { index: true, element: <Home />, loader: CollectionsProductLoader },
       {
         path: '/products',
         element: <ProductsLayout />,

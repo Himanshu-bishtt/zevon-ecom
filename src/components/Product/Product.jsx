@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropType from 'prop-types';
 import { Link } from 'react-router-dom';
 import { WishlistIcon } from '../../icons';
 import classes from './Product.module.scss';
@@ -28,7 +28,9 @@ const Product = ({
             <h2 title={title}>{title}</h2>
           </Link>
         </div>
-        <h2 className={classes.price}>${price}</h2>
+        <h2 className={classes.price}>
+          Price: <span>${price}</span>
+        </h2>
 
         <div className={classes.rating}>
           <p className={classes.stars}>{rate} ⭐</p>
@@ -41,6 +43,17 @@ const Product = ({
       </button>
     </div>
   );
+};
+
+Product.propTypes = {
+  id: PropType.number,
+  title: PropType.string,
+  price: PropType.number,
+  image: PropType.string,
+  category: PropType.string,
+  rate: PropType.number,
+  count: PropType.number,
+  customURL: PropType.string,
 };
 
 export default React.memo(Product);

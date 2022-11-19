@@ -33,7 +33,9 @@ const RenderProductDetail = ({ data }) => {
           <p className={classes.count}>({data.rating.count})</p>
         </div>
 
-        <h2 className={classes.price}>${Number(data.price).toFixed(2)}</h2>
+        <h2 className={classes.price}>
+          Price: <span>${data.price}</span>
+        </h2>
         <p className={classes.description}>{data.description}</p>
 
         <div className={classes['other-info']}>

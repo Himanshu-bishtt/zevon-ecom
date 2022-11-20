@@ -47,19 +47,6 @@
       margin-bottom: 1.2rem;
     }
   }
-
-  .filter-position-controls,
-  .filter-category-controls,
-  .filter-price-controls {
-    label {
-      font-size: 1rem;
-      margin-left: 0.3rem;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 0.8rem;
-    }
-  }
 }
 
 .sort {

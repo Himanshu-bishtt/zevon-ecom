@@ -3,6 +3,7 @@ import { defer, useLoaderData, Await, useSearchParams } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ProductsList from '../../components/ProductsList/ProductsList';
+import Radio from '../../components/UI/Backdrop/Radio/Radio';
 import classes from './Products.module.scss';
 
 const Products = () => {
@@ -20,100 +21,84 @@ const Products = () => {
   const filterCategory = (
     <div className={classes['filter-category']}>
       <h3>Category</h3>
-      <div className={classes['filter-category-controls']}>
-        <input
-          type="radio"
-          name="category"
-          id="all"
-          value="all"
-          checked={searchParams.get('category') === 'all' || false}
-          onChange={cateryFilterHandler}
-        />
-        <label htmlFor="all">All</label>
-      </div>
-      <div className={classes['filter-category-controls']}>
-        <input
-          type="radio"
-          name="category"
-          id="men's clothing"
-          value="men's clothing"
-          checked={searchParams.get('category') === "men's clothing" || false}
-          onChange={cateryFilterHandler}
-        />
-        <label htmlFor="men's clothing">{"Men's Clothing"}</label>
-      </div>
-      <div className={classes['filter-category-controls']}>
-        <input
-          type="radio"
-          name="category"
-          id="women's clothing"
-          value="women's clothing"
-          checked={searchParams.get('category') === "women's clothing" || false}
-          onChange={cateryFilterHandler}
-        />
-        <label htmlFor="women's clothing">{"Women's Clothing"}</label>
-      </div>
-      <div className={classes['filter-category-controls']}>
-        <input
-          type="radio"
-          name="category"
-          id="electronics"
-          value="electronics"
-          checked={searchParams.get('category') === 'electronics' || false}
-          onChange={cateryFilterHandler}
-        />
-        <label htmlFor="electronics">Electronics</label>
-      </div>
-      <div className={classes['filter-category-controls']}>
-        <input
-          type="radio"
-          name="category"
-          id="jewelery"
-          value="jewelery"
-          checked={searchParams.get('category') === 'jewelery' || false}
-          onChange={cateryFilterHandler}
-        />
-        <label htmlFor="jewelery">Jewellery</label>
-      </div>
+      <Radio
+        type="radio"
+        name="category"
+        id="all"
+        value="all"
+        checked={searchParams.get('category') === 'all' || false}
+        htmlFor="all"
+        onChange={cateryFilterHandler}
+      />
+      <Radio
+        type="radio"
+        name="category"
+        id="men's clothing"
+        value="men's clothing"
+        checked={searchParams.get('category') === "men's clothing" || false}
+        htmlFor="men's clothing"
+        onChange={cateryFilterHandler}
+      />
+      <Radio
+        type="radio"
+        name="category"
+        id="women's clothing"
+        value="women's clothing"
+        checked={searchParams.get('category') === "women's clothing" || false}
+        htmlFor="women's clothing"
+        onChange={cateryFilterHandler}
+      />
+      <Radio
+        type="radio"
+        name="category"
+        id="electronics"
+        value="electronics"
+        checked={searchParams.get('category') === 'electronics' || false}
+        htmlFor="electronics"
+        onChange={cateryFilterHandler}
+      />
+      <Radio
+        type="radio"
+        name="category"
+        id="jewelery"
+        value="jewelery"
+        checked={searchParams.get('category') === 'jewelery' || false}
+        htmlFor="jewelery"
+        onChange={cateryFilterHandler}
+      />
     </div>
   );
 
   const filterPrice = (
     <div className={classes['filter-price']}>
       <h3>Price</h3>
-      <div className={classes['filter-price-controls']}>
-        <input
-          type="radio"
-          name="price"
-          id="under 100"
-          value="100"
-          checked={searchParams.get('price-below') === '100' || false}
-          onChange={priceFilterHandler}
-        />
-        <label htmlFor="under 100">Under $100</label>
-      </div>
-      <div className={classes['filter-price-controls']}>
-        <input
-          type="radio"
-          name="price"
-          id="under 500"
-          value="500"
-          checked={searchParams.get('price-below') === '500' || false}
-          onChange={priceFilterHandler}
-        />
-        <label htmlFor="under 500">Under $500</label>
-      </div>
-      <div className={classes['filter-price-controls']}>
-        <input
-          type="radio"
-          name="price"
-          id="under 1000"
-          value="1000"
-          checked={searchParams.get('price-below') === '1000' || false}
-          onChange={priceFilterHandler}
-        />
-        <label htmlFor="under 1000">Under $1000</label>
-      </div>
+      <Radio
+        type="radio"
+        name="price"
+        id="under 100"
+        value="100"
+        checked={searchParams.get('price-below') === '100' || false}
+        htmlFor="under 100"
+        onChange={priceFilterHandler}
+      />
+      <Radio
+        type="radio"
+        name="price"
+        id="under 500"
+        value="500"
+        checked={searchParams.get('price-below') === '500' || false}
+        htmlFor="under 500"
+        onChange={priceFilterHandler}
+      />
+      <Radio
+        type="radio"
+        name="price"
+        id="under 1000"
+        value="1000"
+        checked={searchParams.get('price-below') === '1000' || false}
+        htmlFor="under 1000"
+        onChange={priceFilterHandler}
+      />
     </div>
   );
 

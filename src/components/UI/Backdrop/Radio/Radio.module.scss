@@ -1,0 +1,14 @@
+.filter-position-controls,
+.filter-category-controls,
+.filter-price-controls {
+  label {
+    font-size: 1rem;
+    margin-left: 0.3rem;
+    cursor: pointer;
+    text-transform: capitalize;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 0.8rem;
+  }
+}

@@ -26,6 +26,7 @@ const Products = () => {
           name="category"
           id="all"
           value="all"
+          checked={searchParams.get('category') === 'all' || false}
           onChange={cateryFilterHandler}
         />
         <label htmlFor="all">All</label>
@@ -36,6 +37,7 @@ const Products = () => {
           name="category"
           id="men's clothing"
           value="men's clothing"
+          checked={searchParams.get('category') === "men's clothing" || false}
           onChange={cateryFilterHandler}
         />
         <label htmlFor="men's clothing">{"Men's Clothing"}</label>
@@ -46,6 +48,7 @@ const Products = () => {
           name="category"
           id="women's clothing"
           value="women's clothing"
+          checked={searchParams.get('category') === "women's clothing" || false}
           onChange={cateryFilterHandler}
         />
         <label htmlFor="women's clothing">{"Women's Clothing"}</label>
@@ -56,6 +59,7 @@ const Products = () => {
           name="category"
           id="electronics"
           value="electronics"
+          checked={searchParams.get('category') === 'electronics' || false}
           onChange={cateryFilterHandler}
         />
         <label htmlFor="electronics">Electronics</label>
@@ -66,6 +70,7 @@ const Products = () => {
           name="category"
           id="jewelery"
           value="jewelery"
+          checked={searchParams.get('category') === 'jewelery' || false}
           onChange={cateryFilterHandler}
         />
         <label htmlFor="jewelery">Jewellery</label>
@@ -82,6 +87,7 @@ const Products = () => {
           name="price"
           id="under 100"
           value="100"
+          checked={searchParams.get('price-below') === '100' || false}
           onChange={priceFilterHandler}
         />
         <label htmlFor="under 100">Under $100</label>
@@ -92,6 +98,7 @@ const Products = () => {
           name="price"
           id="under 500"
           value="500"
+          checked={searchParams.get('price-below') === '500' || false}
           onChange={priceFilterHandler}
         />
         <label htmlFor="under 500">Under $500</label>
@@ -102,6 +109,7 @@ const Products = () => {
           name="price"
           id="under 1000"
           value="1000"
+          checked={searchParams.get('price-below') === '1000' || false}
           onChange={priceFilterHandler}
         />
         <label htmlFor="under 1000">Under $1000</label>

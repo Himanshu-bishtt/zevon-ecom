@@ -1,11 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropType from 'prop-types';
 import Product from '../Product/Product';
 
 import classes from './ProductsList.module.scss';
+import { useSearchParams } from 'react-router-dom';
 
 const ProductsList = ({ products }) => {
-  const [defaultValue, setDefaultValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sortHandler = event => {
+    setSearchParams({ sort: event.target.value });
+  };
+
+  switch (searchParams.get('sort')) {
+    case 'name':
+      products = products.sort((a, b) => (a.title > b.title ? 1 : -1));
+      break;
+    case 'low':
+      products = products.sort((a, b) => (a.price > b.price ? 1 : -1));
+      break;
+    case 'high':
+      products = products.sort((a, b) => (a.price > b.price ? -1 : 1));
+      break;
+  }
+
   return (
     <div className={classes.productList}>
       <div className={classes.top}>
@@ -16,8 +34,9 @@ const ProductsList = ({ products }) => {
         <select
           name="sort"
           id="sort"
-          defaultValue={defaultValue}
+          defaultValue={searchParams.get('sort') ?? ''}
           className={classes.dropdown}
+          onChange={sortHandler}
         >
           <option value="" disabled>
             Sort By

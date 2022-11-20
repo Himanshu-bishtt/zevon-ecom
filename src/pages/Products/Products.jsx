@@ -5,25 +5,9 @@ import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ProductsList from '../../components/ProductsList/ProductsList';
 import classes from './Products.module.scss';
 
-const sortProducts = (products, ascending) => {
-  return products.sort((productA, productB) => {
-    if (ascending) {
-      return productA.id > productB.id ? 1 : -1;
-    } else {
-      return productA.id < productB.id ? 1 : -1;
-    }
-  });
-};
-
 const Products = () => {
   const loaderData = useLoaderData();
   let [searchParams, setSearchParams] = useSearchParams();
-
-  const isSortingAscending = searchParams.get('sort') === 'asc';
-
-  const positionFilterHandler = () => {
-    setSearchParams({ sort: isSortingAscending ? 'desc' : 'asc' });
-  };
 
   const cateryFilterHandler = event => {
     setSearchParams({ category: event.target.value });
@@ -32,15 +16,6 @@ const Products = () => {
   const priceFilterHandler = event => {
     setSearchParams({ 'price-below': event.target.value });
   };
-
-  const filterPosition = (
-    <div className={classes['filter-position']}>
-      <h3>Position</h3>
-      <button className={classes.sort} onClick={positionFilterHandler}>
-        Sort {isSortingAscending ? 'desc' : 'asc'}
-      </button>
-    </div>
-  );
 
   const filterCategory = (
     <div className={classes['filter-category']}>
@@ -141,7 +116,6 @@ const Products = () => {
       </div>
       <div className={classes.main}>
         <div className={classes.filters}>
-          {filterPosition}
           {filterCategory}
           {filterPrice}
         </div>
@@ -151,16 +125,6 @@ const Products = () => {
             errorElement={<h1>Some error occurred while loading data</h1>}
           >
             {resolveProducts => {
-              if (searchParams.has('sort'))
-                return (
-                  <ProductsList
-                    products={sortProducts(
-                      resolveProducts,
-                      !isSortingAscending
-                    )}
-                  />
-                );
-
               if (searchParams.has('category')) {
                 if (searchParams.get('category') === 'all') {
                   return <ProductsList products={resolveProducts} />;

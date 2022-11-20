@@ -3,11 +3,22 @@
 .productList {
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
+  row-gap: 3rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .heading span {
   color: $color-red;
+}
+
+.dropdown {
+  padding: 0.5rem 0.2rem;
+  font-size: 0.8rem;
 }
 
 .items {

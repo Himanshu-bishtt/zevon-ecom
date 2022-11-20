@@ -1,3 +1,15 @@
+@import '../../sass/Variables.scss';
+
+.productList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.heading span {
+  color: $color-red;
+}
+
 .items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));

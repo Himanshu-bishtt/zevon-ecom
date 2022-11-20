@@ -6,15 +6,20 @@ import classes from './ProductsList.module.scss';
 
 const ProductsList = ({ products }) => {
   return (
-    <div className={classes.items}>
-      {products.map(product => (
-        <Product
-          key={product.id}
-          {...product}
-          rate={product.rating.rate}
-          count={product.rating.count}
-        />
-      ))}
+    <div className={classes.productList}>
+      <h1 className={`main-heading ${classes.heading}`}>
+        Total <span>{products.length}</span> products
+      </h1>
+      <div className={classes.items}>
+        {products.map(product => (
+          <Product
+            key={product.id}
+            {...product}
+            rate={product.rating.rate}
+            count={product.rating.count}
+          />
+        ))}
+      </div>
     </div>
   );
 };

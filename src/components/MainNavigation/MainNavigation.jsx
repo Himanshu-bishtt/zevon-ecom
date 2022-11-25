@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleSearchBar } from '../../store/ui-slice';
 import Backdrop from '../UI/Backdrop/Backdrop';
@@ -63,10 +63,12 @@ const MainNavigation = () => {
             <WishlistIcon className={classes.logo} />
             Wishlist
           </button>
-          <button>
-            <UserIcon className={classes.logo} />
-            Login
-          </button>
+          <Link to={'/login'}>
+            <button type="button">
+              <UserIcon className={classes.logo} />
+              Login
+            </button>
+          </Link>
         </div>
       </header>
     </>

@@ -12,6 +12,8 @@ import PageNotFound from './pages/NotFound/PageNotFound';
 import ProductsLayout from './pages/Layouts/ProductsLayout';
 
 import './App.scss';
+import Login from './pages/Login/Login';
+import SignUp from './pages/SignUp/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <About />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/register',
+        element: <SignUp />,
       },
       {
         path: '*',

@@ -24,7 +24,7 @@ const Login = () => {
 
     if (response.idToken) {
       console.log(response);
-      dispatch(login(response.idToken));
+      dispatch(login({ token: response.idToken, email: response.email }));
       navigate('/');
     } else {
       setError(response);

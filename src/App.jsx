@@ -10,10 +10,10 @@ import ProductDetail, {
 } from './pages/ProductDetail/ProductDetail';
 import PageNotFound from './pages/NotFound/PageNotFound';
 import ProductsLayout from './pages/Layouts/ProductsLayout';
-
-import './App.scss';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
+
+import './App.scss';
 
 const router = createBrowserRouter([
   {
@@ -21,10 +21,16 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <h1>Some error occurred! Coming from root!</h1>,
     children: [
-      { index: true, element: <Home />, loader: CollectionsProductLoader },
+      {
+        index: true,
+        element: <Home />,
+        loader: CollectionsProductLoader,
+        errorElement: <h1>Error coming from home</h1>,
+      },
       {
         path: '/products',
         element: <ProductsLayout />,
+        errorElement: <h1>Error coming from products</h1>,
         children: [
           {
             index: true,
@@ -45,10 +51,12 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />,
+        errorElement: <h1>Error coming from login</h1>,
       },
       {
         path: '/register',
         element: <SignUp />,
+        errorElement: <h1>Error coming from signup</h1>,
       },
       {
         path: '*',

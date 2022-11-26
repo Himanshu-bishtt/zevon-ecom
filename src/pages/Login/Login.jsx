@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { userLogin } from '../../api/login';
-import { Icons } from '../../icons';
+import { useDispatch } from 'react-redux';
+import { login } from '../../store/auth-slice';
 
+import { Icons } from '../../icons';
 import classes from './Login.module.scss';
 
 const Login = () => {
@@ -10,6 +12,7 @@ const Login = () => {
   const passwordRef = useRef();
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const loginSubmitHandler = async event => {
     event.preventDefault();
@@ -21,6 +24,7 @@ const Login = () => {
 
     if (response.idToken) {
       console.log(response);
+      dispatch(login(response.idToken));
       navigate('/');
     } else {
       setError(response);

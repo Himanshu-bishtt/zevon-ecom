@@ -14,6 +14,7 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 
 import './App.scss';
+import UserProfile from './pages/UserProfile/UserProfile';
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
         path: '/register',
         element: <SignUp />,
         errorElement: <h1>Error coming from signup</h1>,
+      },
+      {
+        path: '/user',
+        element: <UserProfile />,
+        errorElement: <h1>Error coming from user</h1>,
       },
       {
         path: '*',

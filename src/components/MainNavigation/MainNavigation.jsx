@@ -12,6 +12,7 @@ import Search from '../Search/Search';
 const MainNavigation = () => {
   const dispatch = useDispatch();
   const { showSearch } = useSelector(store => store.ui);
+  const { isLoggedIn } = useSelector(store => store.auth);
 
   const searchHandler = () => {
     dispatch(toggleSearchBar());
@@ -55,20 +56,32 @@ const MainNavigation = () => {
             <CartIcon className={classes.logo} />
             Cart
           </button>
+
           <button type="button" onClick={searchHandler}>
             <SearchIcon className={classes.logo} />
             Search
           </button>
+
           <button>
             <WishlistIcon className={classes.logo} />
             Wishlist
           </button>
-          <Link to={'/login'}>
-            <button type="button">
-              <UserIcon className={classes.logo} />
-              Login
-            </button>
-          </Link>
+
+          {isLoggedIn ? (
+            <Link to={'/user'}>
+              <button type="button">
+                <UserIcon className={classes.logo} />
+                User
+              </button>
+            </Link>
+          ) : (
+            <Link to={'/login'}>
+              <button type="button">
+                <UserIcon className={classes.logo} />
+                Login
+              </button>
+            </Link>
+          )}
         </div>
       </header>
     </>

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { signup } from '../../api/signup';
+import { userSignup } from '../../api/signup';
 
 import { Icons } from '../../icons';
 import classes from './SignUp.module.scss';
@@ -17,13 +17,13 @@ const SignUp = () => {
     const enteredPassword = passwordRef.current.value;
     const enteredEmail = emailRef.current.value;
 
-    const data = await signup(enteredEmail, enteredPassword);
+    const response = await userSignup(enteredEmail, enteredPassword);
 
-    if (data.idToken) {
+    if (response.idToken) {
       alert('Sign up successful');
       navigate('/');
     } else {
-      setError(data);
+      setError(response);
     }
   };
 

@@ -1,13 +1,13 @@
 import { AUTHENTICATION_WEB_API } from '../util/helpers';
 
-export const userSignup = async (enteredEmail, enteredPassword) => {
+export const userLogin = async (enteredEmail, enteredPassword) => {
   try {
     const response = await fetch(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${AUTHENTICATION_WEB_API}`,
+      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${AUTHENTICATION_WEB_API}`,
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'applicaton/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email: enteredEmail,

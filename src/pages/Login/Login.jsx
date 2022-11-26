@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { userLogin } from '../../api/login';
 import { Icons } from '../../icons';
 
 import classes from './Login.module.scss';
@@ -7,14 +8,23 @@ import classes from './Login.module.scss';
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const loginSubmitHandler = event => {
+  const loginSubmitHandler = async event => {
     event.preventDefault();
 
-    const enteredName = emailRef.current.value;
+    const enteredEmail = emailRef.current.value;
     const enteredPassword = passwordRef.current.value;
 
-    console.log(enteredName, enteredPassword);
+    const response = await userLogin(enteredEmail, enteredPassword);
+
+    if (response.idToken) {
+      console.log(response);
+      navigate('/');
+    } else {
+      setError(response);
+    }
   };
 
   return (
@@ -51,6 +61,9 @@ const Login = () => {
         <button className={classes.loginBtn} type="submit">
           Login
         </button>
+        {error && (
+          <p className={classes.error}>Login failed: {error.message}</p>
+        )}
         <Link to={'/register'} className={classes.newuser}>
           New User? Register here
         </Link>

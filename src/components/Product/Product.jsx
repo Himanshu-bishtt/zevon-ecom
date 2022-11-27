@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropType from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { add, remove } from '../../store/wishlist-slice';
 import { WishlistIcon } from '../../icons';
 import classes from './Product.module.scss';
@@ -16,8 +16,15 @@ const Product = ({
   count,
   customURL = `${category.replaceAll(' ', '-')}/${id.toString()}`,
 }) => {
+  const { items: wishlistItems } = useSelector(store => store.wishlist);
   const [wishlist, setWishlist] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    wishlistItems.forEach(item => {
+      if (item.id === id) setWishlist(true);
+    });
+  }, [wishlistItems]);
 
   const wishlistHandler = () => {
     if (wishlist) dispatch(remove(id));

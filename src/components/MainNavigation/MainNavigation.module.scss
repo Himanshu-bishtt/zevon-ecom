@@ -44,6 +44,7 @@
   align-items: center;
 
   button {
+    position: relative;
     padding: 0.5rem;
     font-size: 0.7rem;
     background-color: transparent;
@@ -56,6 +57,17 @@
 
     &:hover {
       background-color: $color-white;
+    }
+
+    .badge {
+      position: absolute;
+      top: -1%;
+      right: 15%;
+      background-color: $color-red;
+      color: $color-white;
+      padding: 0.1rem 0.4rem;
+      border-radius: 50%;
+      font-weight: bold;
     }
   }
 

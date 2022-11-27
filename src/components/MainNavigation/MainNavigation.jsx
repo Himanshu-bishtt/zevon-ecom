@@ -13,6 +13,7 @@ const MainNavigation = () => {
   const dispatch = useDispatch();
   const { showSearch } = useSelector(store => store.ui);
   const { isLoggedIn } = useSelector(store => store.auth);
+  const { items: wishlistItems } = useSelector(store => store.wishlist);
 
   const searchHandler = () => {
     dispatch(toggleSearchBar());
@@ -66,6 +67,9 @@ const MainNavigation = () => {
             <button>
               <WishlistIcon className={classes.logo} />
               Wishlist
+              {wishlistItems.length !== 0 && (
+                <span className={classes.badge}>{wishlistItems.length}</span>
+              )}
             </button>
           </Link>
 

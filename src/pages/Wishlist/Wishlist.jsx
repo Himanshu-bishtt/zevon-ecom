@@ -6,7 +6,7 @@ import classes from './Wishlist.module.scss';
 const WishlistItem = ({ id, title, image, category, price }) => {
   return (
     <li className={classes.item}>
-      <img src={image} className={classes.image} />
+      <img src={image} className={`${classes.image} skeleton-loader`} />
       <div className={classes['item-content']}>
         <h2>{title}</h2>
         <h3>{category}</h3>

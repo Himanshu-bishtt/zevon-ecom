@@ -3,7 +3,6 @@ import PropType from 'prop-types';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { add, remove } from '../../store/wishlist-slice';
-import { WishlistIcon } from '../../icons';
 import classes from './Product.module.scss';
 
 const Product = ({
@@ -63,15 +62,15 @@ const Product = ({
         </div>
       </div>
       {rate >= 4 && <p className={classes.ratingBadge}>Top Rated</p>}
-      <button
-        className={`${classes.wishlist} ${
-          wishlist ? classes['wishlist-active'] : ''
-        }`}
-        title="Wishlist this item"
-        onClick={wishlistHandler}
-      >
-        <WishlistIcon />
-      </button>
+      <div className={classes['like-button']} onClick={wishlistHandler}>
+        <div className={classes['heart-bg']}>
+          <div
+            className={`${classes['heart-icon']} ${
+              wishlist ? classes['heart-icon-active'] : ''
+            }`}
+          ></div>
+        </div>
+      </div>
     </div>
   );
 };

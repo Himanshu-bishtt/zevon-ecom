@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../store/auth-slice';
+import { clear } from '../../store/wishlist-slice';
 
 import classes from './UserProfile.module.scss';
 
@@ -12,6 +13,7 @@ const UserProfile = () => {
 
   const logoutHandler = () => {
     dispatch(logout());
+    dispatch(clear());
     navigate('/');
   };
   return (

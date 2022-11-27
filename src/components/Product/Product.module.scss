@@ -116,3 +116,49 @@
 .wishlist-active svg {
   fill: $color-red;
 }
+
+//////////// like icon ////////////////////
+.like-button {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 4%;
+  left: 4%;
+  z-index: 10;
+}
+
+.like-button .heart-icon {
+  height: 100px;
+  width: 100px;
+  background: url('../../assets/heart.png');
+  background-position: left;
+  cursor: pointer;
+  position: absolute;
+}
+
+.like-button .heart-icon-active {
+  animation: like-anim 0.7s steps(28) forwards;
+}
+
+@keyframes like-anim {
+  to {
+    background-position: right;
+  }
+}
+
+.like-button .heart-bg {
+  background: rgba(255, 192, 200, 0);
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 100ms ease;
+}
+
+.like-button .heart-bg:hover {
+  background: rgba(255, 192, 200, 0.7);
+}
+
+/////////////////////////////////////////////

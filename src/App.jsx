@@ -12,6 +12,7 @@ import PageNotFound from './pages/NotFound/PageNotFound';
 import ProductsLayout from './pages/Layouts/ProductsLayout';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
+import Wishlist from './pages/Wishlist/Wishlist';
 
 import './App.scss';
 import UserProfile from './pages/UserProfile/UserProfile';
@@ -64,6 +65,7 @@ const router = createBrowserRouter([
         element: <UserProfile />,
         errorElement: <h1>Error coming from user</h1>,
       },
+      { path: '/wishlist', element: <Wishlist /> },
       {
         path: '*',
         element: <PageNotFound />,

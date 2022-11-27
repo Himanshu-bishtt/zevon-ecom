@@ -62,10 +62,12 @@ const MainNavigation = () => {
             Search
           </button>
 
-          <button>
-            <WishlistIcon className={classes.logo} />
-            Wishlist
-          </button>
+          <Link to={'/wishlist'}>
+            <button>
+              <WishlistIcon className={classes.logo} />
+              Wishlist
+            </button>
+          </Link>
 
           {isLoggedIn ? (
             <Link to={'/user'}>

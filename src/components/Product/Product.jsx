@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropType from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { add, remove } from '../../store/wishlist-slice';
 import { WishlistIcon } from '../../icons';
@@ -17,7 +17,9 @@ const Product = ({
   customURL = `${category.replaceAll(' ', '-')}/${id.toString()}`,
 }) => {
   const { items: wishlistItems } = useSelector(store => store.wishlist);
+  const { isLoggedIn } = useSelector(store => store.auth);
   const [wishlist, setWishlist] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,6 +29,11 @@ const Product = ({
   }, [wishlistItems]);
 
   const wishlistHandler = () => {
+    if (!isLoggedIn) {
+      alert('Please login first');
+      navigate('/login');
+      return;
+    }
     if (wishlist) dispatch(remove(id));
     else dispatch(add({ id, title, price, image, category }));
     setWishlist(prev => !prev);

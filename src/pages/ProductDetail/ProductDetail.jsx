@@ -1,6 +1,7 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import PropType from 'prop-types';
 import { Await, defer, useLoaderData } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 import { getCategoryProducts, getProduct } from '../../api/api';
@@ -8,9 +9,13 @@ import { getCategoryProducts, getProduct } from '../../api/api';
 import { whatsapp, telegram, instagram, facebook } from '../../assets';
 import { Icons, WishlistIcon } from '../../icons';
 import classes from './ProductDetail.module.scss';
+import { add, remove } from '../../store/wishlist-slice';
 
 const RenderProductDetail = ({ data }) => {
+  const dispatch = useDispatch();
+  const { items: wishlistItems } = useSelector(store => store.wishlist);
   const [quantity, setQuantity] = useState(1);
+  const [wishlist, setWishlist] = useState(false);
 
   const quantityIncreaseHandler = () => {
     if (quantity === 10) return;
@@ -21,6 +26,27 @@ const RenderProductDetail = ({ data }) => {
     if (quantity === 1) return;
     setQuantity(prev => prev - 1);
   };
+
+  const wishlistHandler = () => {
+    if (wishlist) dispatch(remove(data.id));
+    else
+      dispatch(
+        add({
+          id: data.id,
+          title: data.title,
+          category: data.category,
+          price: data.price,
+        })
+      );
+
+    setWishlist(prev => !prev);
+  };
+
+  useEffect(() => {
+    wishlistItems.forEach(item => {
+      if (item.id === data.id) setWishlist(true);
+    });
+  }, [wishlistItems]);
 
   return (
     <div className={classes.product}>
@@ -67,7 +93,13 @@ const RenderProductDetail = ({ data }) => {
             </svg>
             Buy Now
           </button>
-          <button className={classes.wishlist} title="Wishlist this item">
+          <button
+            className={`${classes.wishlist} ${
+              wishlist ? classes['wishlist-active'] : ''
+            }`}
+            title="Wishlist this item"
+            onClick={wishlistHandler}
+          >
             <WishlistIcon />
             Wishlist
           </button>

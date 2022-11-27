@@ -159,6 +159,10 @@
   }
 }
 
+.wishlist-active svg {
+  fill: $color-red;
+}
+
 .social {
   margin-top: 1.5rem;
   display: flex;

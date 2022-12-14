@@ -44,7 +44,7 @@ const Collections = () => {
         <div className={classes['banner-content']}>
           <h1>{"Women's Clothing"}</h1>
           <p>{"Check out this week's hottest styles."}</p>
-          <Link to={'/products'} className="btn">
+          <Link to={'/products?category=women%27s+clothing'} className="btn">
             Show Now
           </Link>
         </div>
@@ -54,7 +54,7 @@ const Collections = () => {
         <div className={classes['banner-content']}>
           <h1>{"Men's Clothing"}</h1>
           <p>{"Check out this week's hottest styles."}</p>
-          <Link to={'/products'} className="btn">
+          <Link to={'/products?category=men%27s+clothing'} className="btn">
             Show Now
           </Link>
         </div>

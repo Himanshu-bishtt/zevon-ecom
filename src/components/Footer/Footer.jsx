@@ -5,8 +5,10 @@ import classes from './Footer.module.scss';
 const Footer = () => {
   return (
     <footer className={classes.footer}>
-      <h2>&copy;Zevon Ecom 2021-22</h2>
-      <p>All Rights Reserved</p>
+      <h3>
+        Created with ❤️ by{' '}
+        <a href="https://himanshuu.netlify.app">Himanshu Bisht</a>
+      </h3>
     </footer>
   );
 };

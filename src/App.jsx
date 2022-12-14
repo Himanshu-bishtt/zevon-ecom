@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import RootLayout from './pages/Layouts/RootLayout';
@@ -16,6 +16,8 @@ import Wishlist from './pages/Wishlist/Wishlist';
 
 import './App.scss';
 import UserProfile from './pages/UserProfile/UserProfile';
+import { useDispatch } from 'react-redux';
+import { login } from './store/auth-slice';
 
 const router = createBrowserRouter([
   {
@@ -75,6 +77,17 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const email = localStorage.getItem('email');
+
+    if (token && email) {
+      dispatch(login({ token, email }));
+    }
+  }, [dispatch]);
+
   return <RouterProvider router={router} />;
 };
 

@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { userLogin } from '../../api/login';
 import { useDispatch } from 'react-redux';
-import { login } from '../../store/auth-slice';
+import { storeLoginToken } from '../../store/auth-slice';
 
 import { Icons } from '../../icons';
 import classes from './Login.module.scss';
@@ -23,8 +23,9 @@ const Login = () => {
     const response = await userLogin(enteredEmail, enteredPassword);
 
     if (response.idToken) {
-      console.log(response);
-      dispatch(login({ token: response.idToken, email: response.email }));
+      dispatch(
+        storeLoginToken({ token: response.idToken, email: response.email })
+      );
       navigate('/');
     } else {
       setError(response);

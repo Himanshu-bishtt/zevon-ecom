@@ -23,6 +23,30 @@ const authSlice = createSlice({
   },
 });
 
+export const storeLoginToken = data => {
+  return dispatch => {
+    localStorage.setItem('isLoggedIn', true);
+
+    localStorage.setItem('token', data.token);
+
+    localStorage.setItem('email', data.email);
+
+    dispatch(login({ ...data }));
+  };
+};
+
+export const removeLoginToken = () => {
+  return dispatch => {
+    localStorage.removeItem('isLoggedIn');
+
+    localStorage.removeItem('token');
+
+    localStorage.removeItem('email');
+
+    dispatch(logout());
+  };
+};
+
 export const { login, logout } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -48,7 +48,12 @@ const Wishlist = () => {
           )}
         </>
       ) : (
-        <h1 className="main-heading">{"You're not logged in!"}</h1>
+        <>
+          <h1 className="main-heading">{"You're not logged in!"}</h1>
+          <Link to={'/login'} className={`btn ${classes.loginBtn}`}>
+            Login
+          </Link>
+        </>
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import RootLayout from './pages/Layouts/RootLayout';
@@ -16,8 +16,10 @@ import Wishlist from './pages/Wishlist/Wishlist';
 
 import './App.scss';
 import UserProfile from './pages/UserProfile/UserProfile';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadItems } from './store/wishlist-slice';
 import { login } from './store/auth-slice';
+import { useCallback } from 'react';
 
 const router = createBrowserRouter([
   {
@@ -77,7 +79,66 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  const [initalLoad, setInitialLoad] = useState(true);
+  const { idToken: token } = useSelector(store => store.auth);
+  const { items } = useSelector(store => store.wishlist);
   const dispatch = useDispatch();
+
+  // send wishlist data
+  const sendWishlistData = useCallback(async () => {
+    try {
+      const res = await fetch(
+        `https://zevon-ecom-default-rtdb.firebaseio.com/wishlist.json`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(items),
+        }
+      );
+
+      if (!res.ok) throw new Error('Error sending data');
+
+      const data = await res.json();
+
+      console.log(data);
+    } catch (err) {
+      alert(err.message);
+    }
+  }, [items]);
+
+  const loadWishlistData = useCallback(async () => {
+    try {
+      const res = await fetch(
+        'https://zevon-ecom-default-rtdb.firebaseio.com/wishlist.json'
+      );
+
+      if (!res.ok) throw new Error('Error loading wishlist data');
+
+      const data = await res.json();
+
+      dispatch(loadItems(data || []));
+
+      console.log(data);
+    } catch (err) {
+      alert(err.message);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadWishlistData();
+  }, []);
+
+  useEffect(() => {
+    if (initalLoad) {
+      setInitialLoad(false);
+      return;
+    }
+
+    console.log('Effect running when wishlist changes');
+    sendWishlistData();
+  }, [items]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');

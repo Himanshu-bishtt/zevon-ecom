@@ -16,7 +16,7 @@ const Product = ({
   customURL = `${category.replaceAll(' ', '-')}/${id.toString()}`,
 }) => {
   const { items: wishlistItems } = useSelector(store => store.wishlist);
-  const { isLoggedIn } = useSelector(store => store.auth);
+  const { isLoggedIn, idToken } = useSelector(store => store.auth);
   const [wishlist, setWishlist] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,12 +29,12 @@ const Product = ({
 
   const wishlistHandler = () => {
     if (!isLoggedIn) {
-      alert('Please login first');
-      navigate('/login');
+      confirm('You need to login first :)') && navigate('/login');
       return;
     }
+
     if (wishlist) dispatch(remove(id));
-    else dispatch(add({ id, title, price, image, category }));
+    else dispatch(add({ id, title, price, image, category, token: idToken }));
     setWishlist(prev => !prev);
   };
 

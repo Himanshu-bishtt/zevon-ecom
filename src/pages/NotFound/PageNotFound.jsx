@@ -13,7 +13,7 @@ const PageNotFound = () => {
         alt="page not found gif"
       />
       <div className={classes.content}>
-        <h1>Looks like you're lost</h1>
+        <h1>{"Looks like you're lost"}</h1>
         <p>the page you are looking for is not available!</p>
         <Link to={'/'} className="btn">
           Go to home

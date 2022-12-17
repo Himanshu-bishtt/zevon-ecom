@@ -1,0 +1,9 @@
+@import '../../sass/Variables.scss';
+
+.error {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 4rem 0;
+  text-align: center;
+  color: $color-red;
+}

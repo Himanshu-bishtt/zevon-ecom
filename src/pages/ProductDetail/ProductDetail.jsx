@@ -4,6 +4,7 @@ import { Await, defer, useLoaderData } from 'react-router-dom';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 import { getCategoryProducts, getProduct } from '../../api/api';
+import ErrorElement from '../../components/ErrorElement/ErrorElement';
 
 import {
   whatsapp,
@@ -99,7 +100,7 @@ const ProductDetail = () => {
       <Suspense fallback={<LoadingSpinner />}>
         <Await
           resolve={loaderData.product}
-          errorElement={<h1>Some error occurred while loading the product</h1>}>
+          errorElement={<ErrorElement message={'Some error occurred while loading product data!'} />}>
           {resolvedData => <RenderProductDetail data={resolvedData}/>}
         </Await>
       </Suspense>
@@ -138,7 +139,7 @@ const ProductDetail = () => {
       <Suspense fallback={<LoadingSpinner />}>
         <Await
           resolve={loaderData.category}
-          errorElement={<h1>Some error occurred while loading featured products!</h1>}>
+          errorElement={<ErrorElement message='Some error occurred while loading featured products!'/>}>
           {resolvedData => <FeaturedProducts data={resolvedData} />}
         </Await>
       </Suspense>

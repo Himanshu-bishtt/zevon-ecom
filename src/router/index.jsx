@@ -13,23 +13,26 @@ import SignUp from '../pages/SignUp/SignUp';
 import UserProfile from '../pages/UserProfile/UserProfile';
 import Wishlist from '../pages/Wishlist/Wishlist';
 import PageNotFound from '../pages/NotFound/PageNotFound';
+import ErrorElement from '../components/ErrorElement/ErrorElement';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
-    errorElement: <h1>Some error occurred! Coming from root!</h1>,
+    errorElement: (
+      <ErrorElement message="Some error occurred! Coming from root!" />
+    ),
     children: [
       {
         index: true,
         element: <Home />,
         loader: CollectionsProductLoader,
-        errorElement: <h1>Error coming from home</h1>,
+        errorElement: <ErrorElement message="Error coming from home" />,
       },
       {
         path: '/products',
         element: <ProductsLayout />,
-        errorElement: <h1>Error coming from products</h1>,
+        errorElement: <ErrorElement message="Error coming from products" />,
         children: [
           {
             index: true,
@@ -50,17 +53,17 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />,
-        errorElement: <h1>Error coming from login</h1>,
+        errorElement: <ErrorElement message="Error coming from login" />,
       },
       {
         path: '/register',
         element: <SignUp />,
-        errorElement: <h1>Error coming from signup</h1>,
+        errorElement: <ErrorElement message="Error coming from signup" />,
       },
       {
         path: '/user',
         element: <UserProfile />,
-        errorElement: <h1>Error coming from user</h1>,
+        errorElement: <ErrorElement message="Error coming from user profile" />,
       },
       { path: '/wishlist', element: <Wishlist /> },
       {

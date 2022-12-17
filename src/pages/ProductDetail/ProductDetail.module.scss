@@ -180,4 +180,44 @@
   }
 }
 
-///////////////// featured products ////////////////////
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 2rem;
+  margin: 0 2rem;
+  text-align: center;
+}
+
+.reviews-list {
+  margin: 1rem 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+  margin: 1rem 0;
+  overflow: hidden;
+  padding: 2rem 2rem 1rem 2rem;
+  background-color: $color-white;
+  border-radius: 10px;
+
+  input,
+  textarea {
+    width: 98%;
+    font-size: 0.8rem;
+    padding: 0.7rem 1rem;
+    resize: none;
+  }
+}
+
+.submit {
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  background-color: $color-3;
+  color: $color-white;
+  cursor: pointer;
+  transition: all 0.25s;
+}

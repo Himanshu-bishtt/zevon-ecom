@@ -1,6 +1,6 @@
 import React, { Suspense, useState } from 'react';
 import PropType from 'prop-types';
-import { Await, defer, useLoaderData } from 'react-router-dom';
+import { Await, defer, Form, useLoaderData } from 'react-router-dom';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 import { getCategoryProducts, getProduct } from '../../api/api';
@@ -96,6 +96,24 @@ const ProductDetail = () => {
           {resolvedData => <RenderProductDetail data={resolvedData}/>}
         </Await>
       </Suspense>
+      <div className={classes.reviews}>
+        <div className={classes["customer-reviews"]}>
+          <h1 className='secondary-heading'>Customer Reviews</h1>
+          <ul className={classes["reviews-list"]}>
+            <li>Review 1</li>
+            <li>Review 2</li>
+          </ul>
+        </div>
+
+        <div className={classes["write-reviews"]}>
+          <h1 className='secondary-heading'>Write your review</h1>
+          <form className={classes.form}>
+            <input placeholder='Enter title' type={"text"} name="title" id="title"/>
+            <textarea name="message" id="message" placeholder='Enter message'></textarea>
+            <button className={classes.submit}>Submit</button>
+          </form>
+        </div>
+      </div>
       <Suspense fallback={<LoadingSpinner />}>
         <Await
           resolve={loaderData.category}

@@ -12,6 +12,7 @@ import router from './router';
 const App = () => {
   const [initalLoad, setInitialLoad] = useState(true);
   const { items } = useSelector(store => store.wishlist);
+  const { idToken } = useSelector(store => store.auth);
   const dispatch = useDispatch();
 
   const sendWishlistData = useCallback(async () => {
@@ -23,8 +24,10 @@ const App = () => {
   }, [items]);
 
   useEffect(() => {
-    dispatch(loadWishlistData());
-  }, []);
+    if (idToken) {
+      dispatch(loadWishlistData());
+    }
+  }, [idToken]);
 
   useEffect(() => {
     if (initalLoad) {

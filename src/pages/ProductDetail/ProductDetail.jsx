@@ -1,11 +1,18 @@
 import React, { Suspense, useState } from 'react';
 import PropType from 'prop-types';
-import { Await, defer, Form, useLoaderData } from 'react-router-dom';
+import { Await, defer, useLoaderData } from 'react-router-dom';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 import { getCategoryProducts, getProduct } from '../../api/api';
 
-import { whatsapp, telegram, instagram, facebook } from '../../assets';
+import {
+  whatsapp,
+  telegram,
+  instagram,
+  facebook,
+  person1,
+  person2,
+} from '../../assets';
 import { Icons } from '../../icons';
 import classes from './ProductDetail.module.scss';
 
@@ -23,7 +30,7 @@ const RenderProductDetail = ({ data }) => {
   };
 
   return (
-    <div className={classes.product}>
+    <section className={classes.product}>
       <img className={`${classes.image}`} src={data.image} />
       <div className={classes.content}>
         <h2 className={classes.category}>{data.category}</h2>
@@ -79,7 +86,7 @@ const RenderProductDetail = ({ data }) => {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -96,12 +103,26 @@ const ProductDetail = () => {
           {resolvedData => <RenderProductDetail data={resolvedData}/>}
         </Await>
       </Suspense>
-      <div className={classes.reviews}>
+      <section className={classes.reviews}>
         <div className={classes["customer-reviews"]}>
           <h1 className='secondary-heading'>Customer Reviews</h1>
           <ul className={classes["reviews-list"]}>
-            <li>Review 1</li>
-            <li>Review 2</li>
+            <li className={classes['review-item']}>
+              <img src={person1} alt="person 1"/>
+              <div className={classes['review-content']}>
+                <h4>Himanshu says</h4>
+                <h3>Best product in the market</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas sequi voluptas unde odit sint corporis distinctio modi perspiciatis ea veritatis maxime quod impedit eius amet, beatae quos illum ad? Cum.</p>
+              </div>
+            </li>
+            <li className={classes['review-item']}>
+              <img src={person2} alt="person 1"/>
+              <div className={classes['review-content']}>
+                <h4>Himanshu says</h4>
+                <h3>Best product in the market</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas sequi voluptas unde odit sint corporis distinctio modi perspiciatis ea veritatis maxime quod impedit eius amet, beatae quos illum ad? Cum.</p>
+              </div>
+            </li>
           </ul>
         </div>
 
@@ -113,7 +134,7 @@ const ProductDetail = () => {
             <button className={classes.submit}>Submit</button>
           </form>
         </div>
-      </div>
+      </section>
       <Suspense fallback={<LoadingSpinner />}>
         <Await
           resolve={loaderData.category}

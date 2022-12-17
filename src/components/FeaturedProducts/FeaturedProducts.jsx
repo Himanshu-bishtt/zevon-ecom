@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Product from '../Product/Product';
 
 import classes from './FeaturedProducts.module.scss';
 
 const FeaturedProducts = ({ data }) => {
   return (
-    <div className={classes['featured-products']}>
+    <section className={classes['featured-products']}>
       <h1 className="main-heading">Featured Products</h1>
       <div className={classes.products}>
         {data.map(product => (
@@ -24,8 +25,12 @@ const FeaturedProducts = ({ data }) => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
+};
+
+FeaturedProducts.propTypes = {
+  data: PropTypes.array,
 };
 
 export default FeaturedProducts;

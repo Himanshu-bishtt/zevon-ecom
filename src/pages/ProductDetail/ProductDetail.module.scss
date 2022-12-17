@@ -189,7 +189,44 @@
 }
 
 .reviews-list {
-  margin: 1rem 0;
+  // background-color: $color-white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.review-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.8rem;
+  margin-bottom: 1rem;
+  background-color: $color-white;
+  color: $color-grey;
+  border-radius: 10px;
+  padding: 1rem;
+
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    align-self: flex-start;
+  }
+
+  .review-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 0.3rem;
+  }
+
+  .review-content h3 {
+    font-size: 1rem;
+  }
+
+  .review-content p {
+    text-align: left;
+    font-size: 0.8rem;
+  }
 }
 
 .form {
